@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRM – Technical Roof Management | Detección de fugas en cubiertas planas</title>
+<meta name="description" content="TRM – Technical Roof Management. Detección de fugas, sensores de humedad y mantenimiento de cubiertas planas en toda España. Independiente, certificado y neutral.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1B3E78;--blue-dark:#122d5a;--text:#27313D;
+  --soft:#5a6472;--border:#dde3ea;--bg:#f5f7fa;--white:#fff;--nav-h:80px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;font-size:16px;line-height:1.6}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);
+  background:var(--white);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08)}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:44px;width:auto;display:block}
+.nav-links{list-style:none;display:flex;align-items:center;gap:24px}
+.nav-links li>a{
+  font-size:14px;color:var(--text);text-decoration:none;font-weight:400;
+  padding:4px 0;border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;white-space:nowrap;
+}
+.nav-links li>a:hover{color:var(--blue);border-bottom-color:var(--blue)}
+.nav-drop{position:relative}
+.nav-drop>a::after{content:' ▾';font-size:10px}
+.drop-menu{
+  display:none;position:absolute;top:calc(100% + 16px);left:0;
+  background:white;border:1px solid var(--border);
+  box-shadow:0 4px 20px rgba(0,0,0,.08);min-width:210px;padding:8px 0;z-index:300;
+}
+.nav-drop:hover .drop-menu{display:block}
+.drop-menu a{display:block;padding:9px 20px;font-size:14px;color:var(--text);text-decoration:none}
+.drop-menu a:hover{background:var(--bg);color:var(--blue)}
+.nav-cta{
+  background:var(--blue)!important;color:white!important;
+  padding:10px 20px!important;font-weight:600!important;
+  border-bottom:none!important;white-space:nowrap;
+  transition:background .2s!important;
+}
+.nav-cta:hover{background:var(--blue-dark)!important}
+
+/* HERO */
+#hero{
+  margin-top:var(--nav-h);
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - var(--nav-h));
+}
+.hero-left{
+  padding:80px 60px 80px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-left h1{font-size:clamp(26px,3vw,44px);font-weight:700;line-height:1.15;margin-bottom:20px}
+.hero-left>p{font-size:17px;color:var(--soft);line-height:1.7;margin-bottom:36px;max-width:460px}
+.hero-nav{display:flex;flex-direction:column;list-style:none}
+.hero-nav li a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;border-bottom:1px solid var(--border);
+  text-decoration:none;color:var(--text);font-size:15px;font-weight:600;
+  transition:color .2s;
+}
+.hero-nav li:first-child a{border-top:1px solid var(--border)}
+.hero-nav li a:hover{color:var(--blue)}
+.hero-nav li a .arr{font-size:20px;color:var(--blue);flex-shrink:0;margin-left:12px}
+.hero-right{overflow:hidden;position:relative}
+.hero-right img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* SECTIONS */
+.section-inner{max-width:1280px;margin:0 auto;padding:90px 80px}
+h2.st{font-size:clamp(22px,2.5vw,34px);font-weight:700;line-height:1.2;margin-bottom:20px}
+p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
+.btn-p{
+  display:inline-block;background:var(--blue);color:white;
+  padding:12px 28px;font-weight:600;font-size:15px;
+  text-decoration:none;margin-top:8px;transition:background .2s;
+}
+.btn-p:hover{background:var(--blue-dark)}
+.btn-l{
+  display:inline-flex;align-items:center;gap:6px;color:var(--blue);
+  font-weight:600;font-size:15px;text-decoration:none;
+  border-bottom:1px solid transparent;transition:border-color .2s;
+}
+.btn-l::after{content:'→'}
+.btn-l:hover{border-bottom-color:var(--blue)}
+
+/* INTRO */
+#intro{border-top:1px solid var(--border)}
+.intro-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  align-items:center;padding:90px 80px;
+}
+.intro-right img{width:100%;height:420px;object-fit:cover;display:block}
+
+/* FEAT SPLIT */
+.feat{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.feat.rev{direction:rtl}
+.feat.rev>*{direction:ltr}
+.feat-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:460px}
+.feat-body{padding:80px 70px;display:flex;flex-direction:column;justify-content:center}
+.feat-body.dark{background:#1a2e48}
+.feat-body.dark h3{color:rgba(255,255,255,.9)}
+.feat-body.dark p{color:rgba(255,255,255,.65)}
+.feat-body.dark .fl li{color:rgba(255,255,255,.8);border-bottom-color:rgba(255,255,255,.1)}
+.feat-body h3{font-size:clamp(18px,2vw,28px);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:16px}
+.feat-body p{font-size:15px;color:var(--soft);line-height:1.75;margin-bottom:12px}
+.fl{list-style:none;margin:20px 0 28px}
+.fl li{padding:10px 0 10px 20px;border-bottom:1px solid var(--border);font-size:15px;color:var(--soft);position:relative}
+.fl li::before{content:'—';position:absolute;left:0;color:var(--blue);font-weight:700}
+
+/* 2 CARDS */
+.cards-row{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cards-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr}
+.icard{padding:60px 70px;border-right:1px solid var(--border)}
+.icard:last-child{border-right:none}
+.icard h4{font-size:20px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.3}
+.icard p{font-size:15px;color:var(--soft);line-height:1.75;margin-bottom:20px}
+
+/* DL BANNER */
+.dl-banner{background:var(--blue);padding:26px 80px;display:flex;align-items:center;justify-content:space-between}
+.dl-banner p{color:white;font-size:16px;font-weight:600}
+.dl-banner a{color:white;font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+.dl-banner a::after{content:' →'}
+.dl-banner a:hover{border-bottom-color:white}
+
+/* BENEFITS */
+#beneficios{border-top:1px solid var(--border)}
+.ben-hdr{max-width:1280px;margin:0 auto;padding:70px 80px 40px}
+.ben-hdr h2{font-size:clamp(22px,2.5vw,32px);font-weight:700}
+.ben-grid{max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--border)}
+.ben-item{padding:40px 20px;border-right:1px solid var(--border);text-align:center;transition:background .2s}
+.ben-item:last-child{border-right:none}
+.ben-item:hover{background:var(--bg)}
+.ben-ico{width:64px;height:64px;margin:0 auto 16px;background:var(--bg);display:flex;align-items:center;justify-content:center}
+.ben-ico svg{width:32px;height:32px;stroke:var(--blue);fill:none;stroke-width:1.5}
+.ben-item h4{font-size:15px;font-weight:700;margin-bottom:8px}
+.ben-item p{font-size:13px;color:var(--soft);line-height:1.6}
+
+/* DARK BANNER */
+.dark-ban{background:#1a2e48;padding:56px 80px;text-align:center}
+.dark-ban p{color:rgba(255,255,255,.65);font-size:18px;font-weight:300}
+
+/* TESTIMONIAL */
+#testi{border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.testi-in{max-width:900px;margin:0 auto;padding:80px;text-align:center}
+.testi-in blockquote{font-size:clamp(19px,2.5vw,30px);font-weight:300;color:var(--text);line-height:1.5;font-style:italic;margin-bottom:28px}
+.testi-in blockquote::before{content:'\201C';font-size:64px;color:var(--blue);line-height:0;vertical-align:-22px;margin-right:4px;font-style:normal}
+.testi-in blockquote::after{content:'\201D';font-size:64px;color:var(--blue);line-height:0;vertical-align:-22px;margin-left:4px;font-style:normal}
+.testi-author{font-size:14px;color:var(--soft);font-weight:600}
+.testi-btn{margin-top:32px}
+
+/* CERTS */
+#certs{background:var(--bg);border-bottom:1px solid var(--border)}
+.certs-in{max-width:1280px;margin:0 auto;padding:60px 80px}
+.certs-in h3{font-size:18px;font-weight:700;margin-bottom:36px}
+.certs-logos{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.cert-box{background:white;border:1px solid var(--border);padding:10px 14px;height:70px;display:flex;align-items:center;justify-content:center}
+.cert-box img{height:46px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:.7;transition:opacity .2s,filter .2s}
+.cert-box:hover img{filter:none;opacity:1}
+
+/* TABS */
+#tabs{background:var(--white)}
+.tabs-wr{max-width:1280px;margin:0 auto;padding:80px}
+.tabs-nav{display:flex;border-bottom:2px solid var(--border)}
+.tb{padding:14px 26px;font-size:14px;font-weight:600;color:var(--soft);cursor:pointer;background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s;white-space:nowrap}
+.tb.on{color:var(--blue);border-bottom-color:var(--blue)}
+.tb:hover{color:var(--blue)}
+.tab-panels{border:1px solid var(--border);border-top:none}
+.tp{display:none}
+.tp.on{display:grid;grid-template-columns:1fr 1fr}
+.tp-body{padding:56px 60px;display:flex;flex-direction:column;justify-content:center}
+.tp-body h4{font-size:22px;font-weight:700;margin-bottom:14px;line-height:1.3}
+.tp-body p{font-size:15px;color:var(--soft);line-height:1.75;margin-bottom:20px}
+.tp-img{overflow:hidden;min-height:340px;background:var(--bg)}
+.tp-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* CTA */
+#cta{background:var(--blue);padding:80px;text-align:center}
+#cta h2{color:white;font-size:clamp(22px,3vw,38px);font-weight:700;margin-bottom:12px}
+#cta p{color:rgba(255,255,255,.75);font-size:16px;margin-bottom:32px}
+.btn-w{display:inline-block;background:white;color:var(--blue);padding:14px 36px;font-weight:700;font-size:15px;text-decoration:none;margin:0 6px;transition:background .2s}
+.btn-w:hover{background:#f0f4f8}
+
+/* FOOTER */
+footer{background:#27313D;padding:64px 80px 28px}
+.ft-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:56px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:28px}
+.ft-logo img{height:40px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px;display:block}
+.ft-brand p{font-size:13px;line-height:1.7;color:rgba(255,255,255,.5);margin-bottom:6px}
+.ft-brand a{color:rgba(255,255,255,.5);text-decoration:none}
+.ft-brand a:hover{color:white}
+.ft-soc{display:flex;gap:10px;margin-top:16px}
+.ft-si{width:34px;height:34px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .2s;text-decoration:none}
+.ft-si:hover{border-color:rgba(255,255,255,.6)}
+.ft-si svg{width:15px;height:15px;fill:rgba(255,255,255,.6)}
+.ft-col h5{color:white;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:9px}
+.ft-col a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.ft-col a:hover{color:white}
+.ft-bot{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.ft-bot p{font-size:12px;color:rgba(255,255,255,.3)}
+.ft-leg{display:flex;gap:20px}
+.ft-leg a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none}
+.ft-leg a:hover{color:rgba(255,255,255,.6)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  #hero,.intro-inner,.feat,.cards-inner,.tp.on,.ft-grid{grid-template-columns:1fr}
+  .hero-left{padding:50px 24px}
+  .hero-right{min-height:320px}
+  .feat.rev{direction:ltr}
+  .feat-body,.icard,.tp-body{padding:48px 24px}
+  .ben-grid{grid-template-columns:repeat(2,1fr);padding:0 24px}
+  .ben-item{border-right:none;border-bottom:1px solid var(--border)}
+  .intro-inner,.ben-hdr,.certs-in,.tabs-wr,.dl-banner,#cta,footer,.dark-ban,.section-inner{padding-left:24px;padding-right:24px}
+  .ft-bot{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="img/logo-trm.png" alt="TRM Technical Roof Management"></a>
+  <ul class="nav-links">
+    <li><a href="deteccion-de-fugas.html">Detección de fugas</a></li>
+    <li><a href="mantenimiento.html">Mantenimiento</a></li>
+    <li><a href="sensores.html">Sensores de humedad</a></li>
+    <li class="nav-drop">
+      <a href="#">Sobre nosotros</a>
+      <div class="drop-menu">
+        <a href="sobre-nosotros.html">Sobre nosotros</a>
+        <a href="sobre-nosotros.html#tecnologia">Tecnología</a>
+        <a href="sobre-nosotros.html#certificaciones">Certificaciones</a>
+      </div>
+    </li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-left">
+    <h1>Tu cubierta plana puede hacer más.</h1>
+    <p>Detección de fugas, sensores de humedad y mantenimiento de cubiertas planas en toda España. Independientes, certificados y neutrales.</p>
+    <ul class="hero-nav">
+      <li><a href="deteccion-de-fugas.html"><span>Detección de fugas</span><span class="arr">→</span></a></li>
+      <li><a href="sensores.html"><span>Sensores de humedad</span><span class="arr">→</span></a></li>
+      <li><a href="mantenimiento.html"><span>Mantenimiento de cubiertas</span><span class="arr">→</span></a></li>
+      <li><a href="sobre-nosotros.html"><span>Sobre nosotros</span><span class="arr">→</span></a></li>
+    </ul>
+  </div>
+  <div class="hero-right">
+    <img src="img/hero.jpg" alt="Técnico TRM inspeccionando cubierta plana">
+  </div>
+</section>
+
+<section id="intro">
+  <div class="intro-inner">
+    <div>
+      <h2 class="st">TRM – independiente, neutral y certificado.</h2>
+      <p class="sp">Una cubierta plana con fugas genera costes elevados en tiempo y recursos. Con TRM estás en buenas manos: ya sea en detección de fugas, sensores de humedad o servicios de mantenimiento individuales.</p>
+      <p class="sp">Actuamos siempre de forma independiente y neutral, sin vínculos con fabricantes ni instaladores. Cada intervención incluye un protocolo completo con reportaje fotográfico y diagnóstico detallado.</p>
+      <a href="sobre-nosotros.html" class="btn-p">Sobre nosotros</a>
+    </div>
+    <div><img src="img/intro.jpg" alt="Gestión profesional de cubiertas TRM"></div>
+  </div>
+</section>
+
+<!-- FEATURE: HV-SLD -->
+<div>
+  <div class="feat">
+    <div class="feat-img"><img src="img/estanqueidad.jpg" alt="Detección de fugas HV-SLD"></div>
+    <div class="feat-body dark">
+      <h3>Detección de fugas con tecnología HV-SLD</h3>
+      <p>Con el innovador método HV-SLD, las fugas y zonas potencialmente dañadas se localizan con precisión milimétrica de forma completamente no destructiva.</p>
+      <ul class="fl">
+        <li>Sin necesidad de desmontajes ni obras</li>
+        <li>Localización exacta del punto de entrada de agua</li>
+        <li>Informe técnico completo con fotografías y diagnóstico</li>
+        <li>Válido para todo tipo de impermeabilizaciones</li>
+      </ul>
+      <a href="deteccion-de-fugas.html" class="btn-l" style="color:#7ab4e8">Más información</a>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE: SENSORES -->
+<div>
+  <div class="feat rev">
+    <div class="feat-img"><img src="img/rosi.jpg" alt="Sensor de humedad en cubierta plana"></div>
+    <div class="feat-body">
+      <h3>Sensores de humedad para monitorización continua</h3>
+      <p>Incorporamos sensores de alta sensibilidad que monitorizan la superficie del tejado en tiempo real, emitiendo alertas tempranas antes de que se produzcan filtraciones mayores.</p>
+      <ul class="fl">
+        <li>Control continuo del estado de la cubierta</li>
+        <li>Alertas tempranas ante incrementos de humedad</li>
+        <li>Sin mantenimiento adicional del sensor</li>
+        <li>Solución de supervisión proactiva y fiable</li>
+      </ul>
+      <a href="sensores.html" class="btn-l">Más información</a>
+    </div>
+  </div>
+</div>
+
+<!-- 2 CARDS -->
+<div class="cards-row">
+  <div class="cards-inner">
+    <div class="icard">
+      <h4>Mantenimiento de cubiertas industriales</h4>
+      <p>Diseñamos y ejecutamos planes de mantenimiento adaptados a cada nave. Inspecciones técnicas periódicas, revisión de sellados, limpieza de canalizaciones y evaluación estructural.</p>
+      <a href="mantenimiento.html" class="btn-l">Más información</a>
+    </div>
+    <div class="icard">
+      <h4>Informe técnico completo tras cada intervención</h4>
+      <p>Protocolo verificable con reportaje fotográfico, diagnóstico detallado, análisis de riesgos, identificación de puntos críticos y recomendaciones técnicas específicas.</p>
+      <a href="#contacto" class="btn-l">Solicitar presupuesto</a>
+    </div>
+  </div>
+</div>
+
+<!-- DL BANNER -->
+<div class="dl-banner">
+  <p>📄 &nbsp;Pliegos de condiciones TRM</p>
+  <a href="#contacto">Solicitar documentación</a>
+</div>
+
+<!-- BENEFITS -->
+<section id="beneficios">
+  <div class="ben-hdr"><h2>Cómo te beneficias</h2></div>
+  <div class="ben-grid">
+    <div class="ben-item">
+      <div class="ben-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h4>Certificados</h4>
+      <p>Certificados ISO y conformes a la normativa vigente en España</p>
+    </div>
+    <div class="ben-item">
+      <div class="ben-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <h4>Independientes</h4>
+      <p>Actuamos objetivamente, sin vínculos con fabricantes ni instaladores</p>
+    </div>
+    <div class="ben-item">
+      <div class="ben-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h4>Experimentados</h4>
+      <p>Amplia experiencia en proyectos de cubierta en toda España</p>
+    </div>
+    <div class="ben-item">
+      <div class="ben-ico"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <h4>Innovadores</h4>
+      <p>Tecnología HV-SLD y sensores de última generación</p>
+    </div>
+    <div class="ben-item">
+      <div class="ben-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <h4>Rentables</h4>
+      <p>Excelente relación calidad-precio en cada proyecto</p>
+    </div>
+  </div>
+</section>
+
+<div class="dark-ban">
+  <p>Precisión, metodología y transparencia en cada intervención técnica sobre cubiertas planas.</p>
+</div>
+
+<section id="testi">
+  <div class="testi-in">
+    <blockquote>Excelente colaboración y resultados impecables en la detección de fugas. TRM localiza con precisión lo que otros no ven.</blockquote>
+    <p class="testi-author">Responsable técnico — Empresa industrial, Cataluña</p>
+    <div class="testi-btn">
+      <a href="deteccion-de-fugas.html" class="btn-p">Más información sobre detección de fugas</a>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="certs-in">
+    <h3>Certificaciones y membresías</h3>
+    <div class="certs-logos">
+      <div class="cert-box"><img src="img/cert-sld.png" alt="SLD Certified License Partner"></div>
+      <div class="cert-box"><img src="img/cert-ral.png" alt="RAL Gütezeichen"></div>
+    </div>
+  </div>
+</section>
+
+<section id="tabs">
+  <div class="tabs-wr">
+    <div class="tabs-nav">
+      <button class="tb on" onclick="showTab(0)">Detección de fugas</button>
+      <button class="tb" onclick="showTab(1)">Sensores de humedad</button>
+      <button class="tb" onclick="showTab(2)">Mantenimiento</button>
+    </div>
+    <div class="tab-panels">
+      <div class="tp on">
+        <div class="tp-body">
+          <h4>Detección rápida y sin obras.</h4>
+          <p>Con el método HV-SLD localizamos el punto exacto de entrada de agua sin necesidad de desmontajes, entregando un informe técnico completo con fotografías y diagnóstico.</p>
+          <a href="deteccion-de-fugas.html" class="btn-l">Más información</a>
+        </div>
+        <div class="tp-img"><img src="img/tab1.jpg" alt="Detección de fugas HV"></div>
+      </div>
+      <div class="tp">
+        <div class="tp-body">
+          <h4>Monitorización continua 24/7.</h4>
+          <p>Sensores de alta sensibilidad instalados bajo la impermeabilización que detectan cualquier incremento de humedad y envían alertas antes de que se produzcan daños.</p>
+          <a href="sensores.html" class="btn-l">Más información</a>
+        </div>
+        <div class="tp-img"><img src="img/tab4.jpg" alt="Sensor humedad cubierta"></div>
+      </div>
+      <div class="tp">
+        <div class="tp-body">
+          <h4>Mantenimiento preventivo y correctivo.</h4>
+          <p>Planes de mantenimiento periódicos adaptados a cada nave industrial. Inspecciones técnicas, revisión de sellados, limpieza de canalizaciones y evaluación estructural.</p>
+          <a href="mantenimiento.html" class="btn-l">Más información</a>
+        </div>
+        <div class="tp-img"><img src="img/tab3.jpg" alt="Mantenimiento cubierta plana"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <h2>¿Quieres un presupuesto?</h2>
+  <p>Nuestro equipo técnico te responde en menos de 24 horas.</p>
+  <a href="tel:+34643167941" class="btn-w">+34 643 167 941</a>
+  <a href="mailto:info@trm-spain.com" class="btn-w">info@trm-spain.com</a>
+</section>
+
+<footer id="contacto">
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-logo"><img src="img/logo-trm.png" alt="TRM"></div>
+      <p>TRM – Technical Roof Management Spain</p>
+      <p>C/ Gregal, Buzón 26</p>
+      <p>17185 Vilobí d'Onyar (Girona)</p>
+      <p>T <a href="tel:+34643167941">+34 643 167 941</a></p>
+      <p><a href="mailto:info@trm-spain.com">info@trm-spain.com</a></p>
+      <div class="ft-soc">
+        <a href="#" class="ft-si" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="ft-si" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="deteccion-de-fugas.html">Detección de fugas</a></li>
+        <li><a href="sensores.html">Sensores de humedad</a></li>
+        <li><a href="mantenimiento.html">Mantenimiento</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Empresa</h5>
+      <ul>
+        <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+        <li><a href="sobre-nosotros.html#tecnologia">Tecnología</a></li>
+        <li><a href="sobre-nosotros.html#certificaciones">Certificaciones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="tel:+34643167941">+34 643 167 941</a></li>
+        <li><a href="mailto:info@trm-spain.com">info@trm-spain.com</a></li>
+        <li><a href="#">Aviso legal</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 TRM – Technical Roof Management Spain S.L. · Vilobí d'Onyar (Girona)</p>
+    <div class="ft-leg">
+      <a href="#">Aviso legal</a>
+      <a href="#">Privacidad</a>
+      <a href="#">Condiciones</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showTab(i){
+  document.querySelectorAll('.tb').forEach((b,j)=>b.classList.toggle('on',i===j));
+  document.querySelectorAll('.tp').forEach((p,j)=>p.classList.toggle('on',i===j));
+}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
