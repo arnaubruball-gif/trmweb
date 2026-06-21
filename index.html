@@ -39,17 +39,18 @@ nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08)}
   display:none;position:absolute;top:calc(100% + 16px);left:0;
   background:white;border:1px solid var(--border);
   box-shadow:0 4px 20px rgba(0,0,0,.08);min-width:210px;padding:8px 0;z-index:300;
+  opacity:0;transform:translateY(-6px);transition:opacity .2s,transform .2s;
 }
-.nav-drop:hover .drop-menu{display:block}
+.nav-drop:hover .drop-menu{display:block;opacity:1;transform:translateY(0)}
 .drop-menu a{display:block;padding:9px 20px;font-size:14px;color:var(--text);text-decoration:none}
 .drop-menu a:hover{background:var(--bg);color:var(--blue)}
 .nav-cta{
   background:var(--blue)!important;color:white!important;
   padding:10px 20px!important;font-weight:600!important;
   border-bottom:none!important;white-space:nowrap;
-  transition:background .2s!important;
+  transition:background .2s,transform .2s!important;
 }
-.nav-cta:hover{background:var(--blue-dark)!important}
+.nav-cta:hover{background:var(--blue-dark)!important;transform:translateY(-1px)}
 
 /* HERO */
 #hero{
@@ -72,7 +73,8 @@ nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08)}
 }
 .hero-nav li:first-child a{border-top:1px solid var(--border)}
 .hero-nav li a:hover{color:var(--blue)}
-.hero-nav li a .arr{font-size:20px;color:var(--blue);flex-shrink:0;margin-left:12px}
+.hero-nav li a:hover .arr{transform:translateX(4px)}
+.hero-nav li a .arr{font-size:20px;color:var(--blue);flex-shrink:0;margin-left:12px;transition:transform .2s}
 .hero-right{overflow:hidden;position:relative}
 .hero-right img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -83,16 +85,17 @@ p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
 .btn-p{
   display:inline-block;background:var(--blue);color:white;
   padding:12px 28px;font-weight:600;font-size:15px;
-  text-decoration:none;margin-top:8px;transition:background .2s;
+  text-decoration:none;margin-top:8px;transition:background .2s,transform .2s;
 }
-.btn-p:hover{background:var(--blue-dark)}
+.btn-p:hover{background:var(--blue-dark);transform:translateY(-1px)}
 .btn-l{
   display:inline-flex;align-items:center;gap:6px;color:var(--blue);
   font-weight:600;font-size:15px;text-decoration:none;
   border-bottom:1px solid transparent;transition:border-color .2s;
 }
-.btn-l::after{content:'→'}
+.btn-l::after{content:'→';transition:transform .2s}
 .btn-l:hover{border-bottom-color:var(--blue)}
+.btn-l:hover::after{transform:translateX(3px)}
 
 /* INTRO */
 #intro{border-top:1px solid var(--border)}
@@ -101,12 +104,14 @@ p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
   display:grid;grid-template-columns:1fr 1fr;gap:80px;
   align-items:center;padding:90px 80px;
 }
+.intro-right{overflow:hidden}
 .intro-right img{width:100%;height:420px;object-fit:cover;display:block}
 
 /* FEAT SPLIT */
 .feat{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
 .feat.rev{direction:rtl}
 .feat.rev>*{direction:ltr}
+.feat-img{overflow:hidden}
 .feat-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:460px}
 .feat-body{padding:80px 70px;display:flex;flex-direction:column;justify-content:center}
 .feat-body.dark{background:#1a2e48}
@@ -116,21 +121,24 @@ p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
 .feat-body h3{font-size:clamp(18px,2vw,28px);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:16px}
 .feat-body p{font-size:15px;color:var(--soft);line-height:1.75;margin-bottom:12px}
 .fl{list-style:none;margin:20px 0 28px}
-.fl li{padding:10px 0 10px 20px;border-bottom:1px solid var(--border);font-size:15px;color:var(--soft);position:relative}
-.fl li::before{content:'—';position:absolute;left:0;color:var(--blue);font-weight:700}
+.fl li{padding:10px 0 10px 20px;border-bottom:1px solid var(--border);font-size:15px;color:var(--soft);position:relative;transition:padding-left .2s,color .2s}
+.fl li::before{content:'—';position:absolute;left:0;color:var(--blue);font-weight:700;transition:left .2s}
+.fl li:hover{padding-left:26px;color:var(--text)}
+.fl li:hover::before{left:6px}
 
 /* 2 CARDS */
 .cards-row{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .cards-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr}
-.icard{padding:60px 70px;border-right:1px solid var(--border)}
+.icard{padding:60px 70px;border-right:1px solid var(--border);transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
 .icard:last-child{border-right:none}
+.icard:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(27,62,120,.08);background:white;position:relative;z-index:1}
 .icard h4{font-size:20px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.3}
 .icard p{font-size:15px;color:var(--soft);line-height:1.75;margin-bottom:20px}
 
 /* DL BANNER */
 .dl-banner{background:var(--blue);padding:26px 80px;display:flex;align-items:center;justify-content:space-between}
 .dl-banner p{color:white;font-size:16px;font-weight:600}
-.dl-banner a{color:white;font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+.dl-banner a{color:white;font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;transition:border-color .2s}
 .dl-banner a::after{content:' →'}
 .dl-banner a:hover{border-bottom-color:white}
 
@@ -139,10 +147,11 @@ p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
 .ben-hdr{max-width:1280px;margin:0 auto;padding:70px 80px 40px}
 .ben-hdr h2{font-size:clamp(22px,2.5vw,32px);font-weight:700}
 .ben-grid{max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--border)}
-.ben-item{padding:40px 20px;border-right:1px solid var(--border);text-align:center;transition:background .2s}
+.ben-item{padding:40px 20px;border-right:1px solid var(--border);text-align:center;transition:background .25s,transform .25s}
 .ben-item:last-child{border-right:none}
-.ben-item:hover{background:var(--bg)}
-.ben-ico{width:64px;height:64px;margin:0 auto 16px;background:var(--bg);display:flex;align-items:center;justify-content:center}
+.ben-item:hover{background:var(--bg);transform:translateY(-4px)}
+.ben-ico{width:64px;height:64px;margin:0 auto 16px;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform .3s}
+.ben-item:hover .ben-ico{transform:scale(1.08) rotate(-4deg)}
 .ben-ico svg{width:32px;height:32px;stroke:var(--blue);fill:none;stroke-width:1.5}
 .ben-item h4{font-size:15px;font-weight:700;margin-bottom:8px}
 .ben-item p{font-size:13px;color:var(--soft);line-height:1.6}
@@ -165,7 +174,8 @@ p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
 .certs-in{max-width:1280px;margin:0 auto;padding:60px 80px}
 .certs-in h3{font-size:18px;font-weight:700;margin-bottom:36px}
 .certs-logos{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
-.cert-box{background:white;border:1px solid var(--border);padding:10px 14px;height:70px;display:flex;align-items:center;justify-content:center}
+.cert-box{background:white;border:1px solid var(--border);padding:10px 14px;height:70px;display:flex;align-items:center;justify-content:center;transition:transform .25s,box-shadow .25s}
+.cert-box:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
 .cert-box img{height:46px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:.7;transition:opacity .2s,filter .2s}
 .cert-box:hover img{filter:none;opacity:1}
 
@@ -177,20 +187,22 @@ p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
 .tb.on{color:var(--blue);border-bottom-color:var(--blue)}
 .tb:hover{color:var(--blue)}
 .tab-panels{border:1px solid var(--border);border-top:none}
-.tp{display:none}
+.tp{display:none;animation:fadeIn .4s ease}
 .tp.on{display:grid;grid-template-columns:1fr 1fr}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .tp-body{padding:56px 60px;display:flex;flex-direction:column;justify-content:center}
 .tp-body h4{font-size:22px;font-weight:700;margin-bottom:14px;line-height:1.3}
 .tp-body p{font-size:15px;color:var(--soft);line-height:1.75;margin-bottom:20px}
 .tp-img{overflow:hidden;min-height:340px;background:var(--bg)}
-.tp-img img{width:100%;height:100%;object-fit:cover;display:block}
+.tp-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.tp-img:hover img{transform:scale(1.05)}
 
 /* CTA */
 #cta{background:var(--blue);padding:80px;text-align:center}
 #cta h2{color:white;font-size:clamp(22px,3vw,38px);font-weight:700;margin-bottom:12px}
 #cta p{color:rgba(255,255,255,.75);font-size:16px;margin-bottom:32px}
-.btn-w{display:inline-block;background:white;color:var(--blue);padding:14px 36px;font-weight:700;font-size:15px;text-decoration:none;margin:0 6px;transition:background .2s}
-.btn-w:hover{background:#f0f4f8}
+.btn-w{display:inline-block;background:white;color:var(--blue);padding:14px 36px;font-weight:700;font-size:15px;text-decoration:none;margin:0 6px;transition:background .2s,transform .2s}
+.btn-w:hover{background:#f0f4f8;transform:translateY(-1px)}
 
 /* FOOTER */
 footer{background:#27313D;padding:64px 80px 28px}
@@ -200,8 +212,8 @@ footer{background:#27313D;padding:64px 80px 28px}
 .ft-brand a{color:rgba(255,255,255,.5);text-decoration:none}
 .ft-brand a:hover{color:white}
 .ft-soc{display:flex;gap:10px;margin-top:16px}
-.ft-si{width:34px;height:34px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .2s;text-decoration:none}
-.ft-si:hover{border-color:rgba(255,255,255,.6)}
+.ft-si{width:34px;height:34px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .2s,transform .2s;text-decoration:none}
+.ft-si:hover{border-color:rgba(255,255,255,.6);transform:translateY(-2px)}
 .ft-si svg{width:15px;height:15px;fill:rgba(255,255,255,.6)}
 .ft-col h5{color:white;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
 .ft-col ul{list-style:none}
@@ -213,6 +225,10 @@ footer{background:#27313D;padding:64px 80px 28px}
 .ft-leg{display:flex;gap:20px}
 .ft-leg a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none}
 .ft-leg a:hover{color:rgba(255,255,255,.6)}
+
+/* DINAMISMO: scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
 @media(max-width:960px){
@@ -228,22 +244,26 @@ footer{background:#27313D;padding:64px 80px 28px}
   .intro-inner,.ben-hdr,.certs-in,.tabs-wr,.dl-banner,#cta,footer,.dark-ban,.section-inner{padding-left:24px;padding-right:24px}
   .ft-bot{flex-direction:column;text-align:center}
 }
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  *{scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="nav-logo"><img src="img/logo-trm.png" alt="TRM Technical Roof Management"></a>
+  <a href="/" class="nav-logo"><img src="img/logo-trm.png" alt="TRM Technical Roof Management"></a>
   <ul class="nav-links">
-    <li><a href="deteccion-de-fugas.html">Detección de fugas</a></li>
-    <li><a href="mantenimiento.html">Mantenimiento</a></li>
-    <li><a href="sensores.html">Sensores de humedad</a></li>
+    <li><a href="/deteccion-de-fugas.html">Detección de fugas</a></li>
+    <li><a href="/mantenimiento.html">Mantenimiento</a></li>
+    <li><a href="/sensores.html">Sensores de humedad</a></li>
     <li class="nav-drop">
       <a href="#">Sobre nosotros</a>
       <div class="drop-menu">
-        <a href="sobre-nosotros.html">Sobre nosotros</a>
-        <a href="sobre-nosotros.html#tecnologia">Tecnología</a>
-        <a href="sobre-nosotros.html#certificaciones">Certificaciones</a>
+        <a href="/sobre-nosotros.html">Sobre nosotros</a>
+        <a href="/sobre-nosotros.html#tecnologia">Tecnología</a>
+        <a href="/sobre-nosotros.html#certificaciones">Certificaciones</a>
       </div>
     </li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
@@ -255,10 +275,10 @@ footer{background:#27313D;padding:64px 80px 28px}
     <h1>Tu cubierta plana puede hacer más.</h1>
     <p>Detección de fugas, sensores de humedad y mantenimiento de cubiertas planas en toda España. Independientes, certificados y neutrales.</p>
     <ul class="hero-nav">
-      <li><a href="deteccion-de-fugas.html"><span>Detección de fugas</span><span class="arr">→</span></a></li>
-      <li><a href="sensores.html"><span>Sensores de humedad</span><span class="arr">→</span></a></li>
-      <li><a href="mantenimiento.html"><span>Mantenimiento de cubiertas</span><span class="arr">→</span></a></li>
-      <li><a href="sobre-nosotros.html"><span>Sobre nosotros</span><span class="arr">→</span></a></li>
+      <li><a href="/deteccion-de-fugas.html"><span>Detección de fugas</span><span class="arr">→</span></a></li>
+      <li><a href="/sensores.html"><span>Sensores de humedad</span><span class="arr">→</span></a></li>
+      <li><a href="/mantenimiento.html"><span>Mantenimiento de cubiertas</span><span class="arr">→</span></a></li>
+      <li><a href="/sobre-nosotros.html"><span>Sobre nosotros</span><span class="arr">→</span></a></li>
     </ul>
   </div>
   <div class="hero-right">
@@ -267,20 +287,20 @@ footer{background:#27313D;padding:64px 80px 28px}
 </section>
 
 <section id="intro">
-  <div class="intro-inner">
+  <div class="intro-inner reveal">
     <div>
       <h2 class="st">TRM – independiente, neutral y certificado.</h2>
       <p class="sp">Una cubierta plana con fugas genera costes elevados en tiempo y recursos. Con TRM estás en buenas manos: ya sea en detección de fugas, sensores de humedad o servicios de mantenimiento individuales.</p>
       <p class="sp">Actuamos siempre de forma independiente y neutral, sin vínculos con fabricantes ni instaladores. Cada intervención incluye un protocolo completo con reportaje fotográfico y diagnóstico detallado.</p>
-      <a href="sobre-nosotros.html" class="btn-p">Sobre nosotros</a>
+      <a href="/sobre-nosotros.html" class="btn-p">Sobre nosotros</a>
     </div>
-    <div><img src="img/intro.jpg" alt="Gestión profesional de cubiertas TRM"></div>
+    <div class="intro-right"><img src="img/intro.jpg" alt="Gestión profesional de cubiertas TRM"></div>
   </div>
 </section>
 
 <!-- FEATURE: HV-SLD -->
 <div>
-  <div class="feat">
+  <div class="feat reveal">
     <div class="feat-img"><img src="img/estanqueidad.jpg" alt="Detección de fugas HV-SLD"></div>
     <div class="feat-body dark">
       <h3>Detección de fugas con tecnología HV-SLD</h3>
@@ -291,14 +311,14 @@ footer{background:#27313D;padding:64px 80px 28px}
         <li>Informe técnico completo con fotografías y diagnóstico</li>
         <li>Válido para todo tipo de impermeabilizaciones</li>
       </ul>
-      <a href="deteccion-de-fugas.html" class="btn-l" style="color:#7ab4e8">Más información</a>
+      <a href="/deteccion-de-fugas.html" class="btn-l" style="color:#7ab4e8">Más información</a>
     </div>
   </div>
 </div>
 
 <!-- FEATURE: SENSORES -->
 <div>
-  <div class="feat rev">
+  <div class="feat rev reveal">
     <div class="feat-img"><img src="img/rosi.jpg" alt="Sensor de humedad en cubierta plana"></div>
     <div class="feat-body">
       <h3>Sensores de humedad para monitorización continua</h3>
@@ -309,18 +329,18 @@ footer{background:#27313D;padding:64px 80px 28px}
         <li>Sin mantenimiento adicional del sensor</li>
         <li>Solución de supervisión proactiva y fiable</li>
       </ul>
-      <a href="sensores.html" class="btn-l">Más información</a>
+      <a href="/sensores.html" class="btn-l">Más información</a>
     </div>
   </div>
 </div>
 
 <!-- 2 CARDS -->
 <div class="cards-row">
-  <div class="cards-inner">
+  <div class="cards-inner reveal">
     <div class="icard">
       <h4>Mantenimiento de cubiertas industriales</h4>
       <p>Diseñamos y ejecutamos planes de mantenimiento adaptados a cada nave. Inspecciones técnicas periódicas, revisión de sellados, limpieza de canalizaciones y evaluación estructural.</p>
-      <a href="mantenimiento.html" class="btn-l">Más información</a>
+      <a href="/mantenimiento.html" class="btn-l">Más información</a>
     </div>
     <div class="icard">
       <h4>Informe técnico completo tras cada intervención</h4>
@@ -339,7 +359,7 @@ footer{background:#27313D;padding:64px 80px 28px}
 <!-- BENEFITS -->
 <section id="beneficios">
   <div class="ben-hdr"><h2>Cómo te beneficias</h2></div>
-  <div class="ben-grid">
+  <div class="ben-grid reveal">
     <div class="ben-item">
       <div class="ben-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
       <h4>Certificados</h4>
@@ -368,22 +388,22 @@ footer{background:#27313D;padding:64px 80px 28px}
   </div>
 </section>
 
-<div class="dark-ban">
+<div class="dark-ban reveal">
   <p>Precisión, metodología y transparencia en cada intervención técnica sobre cubiertas planas.</p>
 </div>
 
 <section id="testi">
-  <div class="testi-in">
+  <div class="testi-in reveal">
     <blockquote>Excelente colaboración y resultados impecables en la detección de fugas. TRM localiza con precisión lo que otros no ven.</blockquote>
     <p class="testi-author">Responsable técnico — Empresa industrial, Cataluña</p>
     <div class="testi-btn">
-      <a href="deteccion-de-fugas.html" class="btn-p">Más información sobre detección de fugas</a>
+      <a href="/deteccion-de-fugas.html" class="btn-p">Más información sobre detección de fugas</a>
     </div>
   </div>
 </section>
 
 <section id="certs">
-  <div class="certs-in">
+  <div class="certs-in reveal">
     <h3>Certificaciones y membresías</h3>
     <div class="certs-logos">
       <div class="cert-box"><img src="img/cert-sld.png" alt="SLD Certified License Partner"></div>
@@ -393,7 +413,7 @@ footer{background:#27313D;padding:64px 80px 28px}
 </section>
 
 <section id="tabs">
-  <div class="tabs-wr">
+  <div class="tabs-wr reveal">
     <div class="tabs-nav">
       <button class="tb on" onclick="showTab(0)">Detección de fugas</button>
       <button class="tb" onclick="showTab(1)">Sensores de humedad</button>
@@ -404,7 +424,7 @@ footer{background:#27313D;padding:64px 80px 28px}
         <div class="tp-body">
           <h4>Detección rápida y sin obras.</h4>
           <p>Con el método HV-SLD localizamos el punto exacto de entrada de agua sin necesidad de desmontajes, entregando un informe técnico completo con fotografías y diagnóstico.</p>
-          <a href="deteccion-de-fugas.html" class="btn-l">Más información</a>
+          <a href="/deteccion-de-fugas.html" class="btn-l">Más información</a>
         </div>
         <div class="tp-img"><img src="img/tab1.jpg" alt="Detección de fugas HV"></div>
       </div>
@@ -412,7 +432,7 @@ footer{background:#27313D;padding:64px 80px 28px}
         <div class="tp-body">
           <h4>Monitorización continua 24/7.</h4>
           <p>Sensores de alta sensibilidad instalados bajo la impermeabilización que detectan cualquier incremento de humedad y envían alertas antes de que se produzcan daños.</p>
-          <a href="sensores.html" class="btn-l">Más información</a>
+          <a href="/sensores.html" class="btn-l">Más información</a>
         </div>
         <div class="tp-img"><img src="img/tab4.jpg" alt="Sensor humedad cubierta"></div>
       </div>
@@ -420,7 +440,7 @@ footer{background:#27313D;padding:64px 80px 28px}
         <div class="tp-body">
           <h4>Mantenimiento preventivo y correctivo.</h4>
           <p>Planes de mantenimiento periódicos adaptados a cada nave industrial. Inspecciones técnicas, revisión de sellados, limpieza de canalizaciones y evaluación estructural.</p>
-          <a href="mantenimiento.html" class="btn-l">Más información</a>
+          <a href="/mantenimiento.html" class="btn-l">Más información</a>
         </div>
         <div class="tp-img"><img src="img/tab3.jpg" alt="Mantenimiento cubierta plana"></div>
       </div>
@@ -452,17 +472,17 @@ footer{background:#27313D;padding:64px 80px 28px}
     <div class="ft-col">
       <h5>Servicios</h5>
       <ul>
-        <li><a href="deteccion-de-fugas.html">Detección de fugas</a></li>
-        <li><a href="sensores.html">Sensores de humedad</a></li>
-        <li><a href="mantenimiento.html">Mantenimiento</a></li>
+        <li><a href="/deteccion-de-fugas.html">Detección de fugas</a></li>
+        <li><a href="/sensores.html">Sensores de humedad</a></li>
+        <li><a href="/mantenimiento.html">Mantenimiento</a></li>
       </ul>
     </div>
     <div class="ft-col">
       <h5>Empresa</h5>
       <ul>
-        <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
-        <li><a href="sobre-nosotros.html#tecnologia">Tecnología</a></li>
-        <li><a href="sobre-nosotros.html#certificaciones">Certificaciones</a></li>
+        <li><a href="/sobre-nosotros.html">Sobre nosotros</a></li>
+        <li><a href="/sobre-nosotros.html#tecnologia">Tecnología</a></li>
+        <li><a href="/sobre-nosotros.html#certificaciones">Certificaciones</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
@@ -498,6 +518,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
   });
 });
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
 </script>
 </body>
 </html>
