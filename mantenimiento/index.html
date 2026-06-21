@@ -29,7 +29,9 @@ nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08)}
 .page-hero-left p{font-size:17px;color:rgba(255,255,255,.7);line-height:1.7;max-width:480px;margin-bottom:32px}
 .btn-acc{display:inline-block;background:white;color:var(--blue);padding:13px 30px;font-weight:700;font-size:15px;text-decoration:none}
 .btn-acc:hover{background:#f0f4f8}
-.page-hero-right img{width:100%;height:100%;object-fit:cover;display:block}
+.page-hero-right{overflow:hidden}
+.page-hero-right img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.page-hero-right:hover img{transform:scale(1.04)}
 .intro-strip{background:var(--bg);border-bottom:1px solid var(--border);padding:48px 80px}
 .intro-strip-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
 .strip-item{display:flex;align-items:flex-start;gap:16px}
@@ -39,7 +41,9 @@ nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08)}
 .strip-item p{font-size:14px;color:var(--soft);line-height:1.5}
 .content-section{max-width:1280px;margin:0 auto;padding:90px 80px}
 .cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.cs-img img{width:100%;height:420px;object-fit:cover;display:block}
+.cs-img{overflow:hidden}
+.cs-img img{width:100%;height:420px;object-fit:cover;display:block;transition:transform .6s ease}
+.cs-img:hover img{transform:scale(1.05)}
 h2.st{font-size:clamp(22px,2.5vw,34px);font-weight:700;line-height:1.2;margin-bottom:20px}
 p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
 .fl{list-style:none;margin:20px 0 28px}
@@ -59,34 +63,37 @@ footer{background:#27313D;padding:48px 80px 24px}
 .ft-simple-links a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none}
 .ft-simple-links a:hover{color:white}
 .ft-copy{max-width:1280px;margin:0 auto;font-size:12px;color:rgba(255,255,255,.3)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
 @media(max-width:960px){
   nav{padding:0 20px}.nav-links{display:none}
   .page-hero,.cs-grid,.intro-strip-inner{grid-template-columns:1fr}
   .page-hero-left,.content-section,.intro-strip,#cta,footer{padding-left:24px;padding-right:24px}
 }
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important}*{scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <nav id="nav">
-  <a href="index.html" class="nav-logo"><img src="img/logo-trm.png" alt="TRM"></a>
+  <a href="/" class="nav-logo"><img src="../img/logo-trm.png" alt="TRM"></a>
   <ul class="nav-links">
-    <li><a href="deteccion-de-fugas.html">Detección de fugas</a></li>
-    <li><a href="mantenimiento.html" class="active">Mantenimiento</a></li>
-    <li><a href="sensores.html">Sensores de humedad</a></li>
-    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+    <li><a href="/deteccion-de-fugas.html">Detección de fugas</a></li>
+    <li><a href="/mantenimiento.html" class="active">Mantenimiento</a></li>
+    <li><a href="/sensores.html">Sensores de humedad</a></li>
+    <li><a href="/sobre-nosotros.html">Sobre nosotros</a></li>
     <li><a href="#cta" class="nav-cta">Contacto</a></li>
   </ul>
 </nav>
 
 <div class="page-hero">
   <div class="page-hero-left">
-    <p class="breadcrumb"><a href="index.html">Inicio</a><span>›</span>Mantenimiento</p>
+    <p class="breadcrumb"><a href="/">Inicio</a><span>›</span>Mantenimiento</p>
     <h1>Mantenimiento de cubiertas industriales</h1>
     <p>Planes de mantenimiento preventivo y correctivo adaptados a cada nave. Prolongamos la vida útil de tu cubierta y garantizamos la continuidad operativa.</p>
     <a href="#cta" class="btn-acc">Solicitar plan de mantenimiento</a>
   </div>
   <div class="page-hero-right">
-    <img src="img/mantenimiento-limpieza1.jpg" alt="Mantenimiento cubierta plana TRM">
+    <img src="../img/mantenimiento-limpieza1.jpg" alt="Mantenimiento cubierta plana TRM">
   </div>
 </div>
 
@@ -108,7 +115,7 @@ footer{background:#27313D;padding:48px 80px 24px}
 </div>
 
 <div class="content-section">
-  <div class="cs-grid">
+  <div class="cs-grid reveal">
     <div>
       <h2 class="st">Mantenimiento integral de cubiertas planas</h2>
       <p class="sp">Diseñamos y ejecutamos planes de mantenimiento adaptados a cada nave industrial. Nuestro enfoque preventivo se centra en detectar y resolver pequeños problemas antes de que se conviertan en costosas averías.</p>
@@ -122,7 +129,7 @@ footer{background:#27313D;padding:48px 80px 24px}
       </ul>
       <a href="#cta" class="btn-p">Solicitar plan de mantenimiento</a>
     </div>
-    <div class="cs-img"><img src="img/mantenimiento-limpieza2.jpg" alt="Técnico mantenimiento cubierta TRM"></div>
+    <div class="cs-img"><img src="../img/mantenimiento-limpieza2.jpg" alt="Técnico mantenimiento cubierta TRM"></div>
   </div>
 </div>
 
@@ -135,17 +142,27 @@ footer{background:#27313D;padding:48px 80px 24px}
 
 <footer>
   <div class="ft-simple">
-    <img src="img/logo-trm.png" alt="TRM">
+    <img src="../img/logo-trm.png" alt="TRM">
     <div class="ft-simple-links">
-      <a href="deteccion-de-fugas.html">Detección de fugas</a>
-      <a href="sensores.html">Sensores</a>
-      <a href="mantenimiento.html">Mantenimiento</a>
-      <a href="sobre-nosotros.html">Sobre nosotros</a>
+      <a href="/deteccion-de-fugas.html">Detección de fugas</a>
+      <a href="/sensores.html">Sensores</a>
+      <a href="/mantenimiento.html">Mantenimiento</a>
+      <a href="/sobre-nosotros.html">Sobre nosotros</a>
       <a href="#cta">Contacto</a>
     </div>
   </div>
   <p class="ft-copy">© 2025 TRM – Technical Roof Management Spain S.L. · C/ Gregal, Buzón 26, 17185 Vilobí d'Onyar (Girona)</p>
 </footer>
-<script>window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10))</script>
+<script>
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10));
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+</script>
 </body>
 </html>
