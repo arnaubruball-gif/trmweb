@@ -107,7 +107,9 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -374,6 +376,7 @@ footer{background:#27313D;padding:64px 80px 28px}
 @media(max-width:960px){
   nav{padding:0 20px}
   .nav-links{display:none}
+  .nav-ham{display:flex}
   #hero,.intro-inner,.feat,.cards-inner,.tp.on,.ft-grid{grid-template-columns:1fr}
   .hero-left{padding:50px 24px}
   .hero-right{min-height:320px}
@@ -383,11 +386,34 @@ footer{background:#27313D;padding:64px 80px 28px}
   .ben-item{border-right:none;border-bottom:1px solid var(--border)}
   .intro-inner,.ben-hdr,.certs-in,.tabs-wr,.dl-banner,#cta,footer,.dark-ban,.section-inner{padding-left:24px;padding-right:24px}
   .ft-bot{flex-direction:column;text-align:center}
+  .testi-in{padding:50px 24px}
+  #cta{padding:50px 24px}
+  .ft-grid{gap:28px}
+  .tabs-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap}
+  .dark-ban{padding:40px 24px}
+}
+@media(max-width:480px){
+  .ben-grid{grid-template-columns:1fr}
+  .cards-inner{grid-template-columns:1fr}
+  .hero-left h1{font-size:26px}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1!important;transform:none!important;transition:none!important}
   *{scroll-behavior:auto!important}
 }
+
+/* HAMBURGER */
+.nav-ham{display:none;flex-direction:column;justify-content:space-between;width:28px;height:20px;background:none;border:none;cursor:pointer;padding:0;z-index:210;flex-shrink:0}
+.nav-ham span{display:block;width:100%;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
+.nav-ham.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.nav-ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-ham.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+/* MOBILE MENU */
+.mob-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:white;z-index:190;flex-direction:column;padding:32px 24px;overflow-y:auto}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:20px;font-weight:600;color:var(--text);text-decoration:none;padding:18px 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mob-menu a:hover{color:var(--blue)}
+.mob-menu .mob-cta{margin-top:24px;background:var(--blue);color:white!important;text-align:center;padding:16px 24px;border:none;border-bottom:none}
 </style>
 </head>
 <body>
@@ -401,7 +427,15 @@ footer{background:#27313D;padding:64px 80px 28px}
     <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
     <li><a href="#contacto" class="nav-cta">Contacto</a></li>
   </ul>
+  <button class="nav-ham" id="navHam" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="/deteccion-de-fugas/">Detección de fugas</a>
+  <a href="/mantenimiento/">Mantenimiento</a>
+  <a href="/sensores/">Sensores de humedad</a>
+  <a href="/sobre-nosotros/">Sobre nosotros</a>
+  <a href="#contacto" class="mob-cta">Contacto</a>
+</div>
 
 <section id="hero">
   <div class="hero-left">
@@ -415,7 +449,7 @@ footer{background:#27313D;padding:64px 80px 28px}
     </ul>
   </div>
   <div class="hero-right">
-    <img src="img/hero.jpg" alt="Técnico TRM inspeccionando cubierta plana">
+    <img src="img/hero.jpg" alt="Técnico TRM inspeccionando cubierta plana" fetchpriority="high">
   </div>
 </section>
 
@@ -427,14 +461,14 @@ footer{background:#27313D;padding:64px 80px 28px}
       <p class="sp">Actuamos siempre de forma independiente y neutral, sin vínculos con fabricantes ni instaladores. Cada intervención incluye un protocolo completo con reportaje fotográfico y diagnóstico detallado.</p>
       <a href="/sobre-nosotros/" class="btn-p">Sobre nosotros</a>
     </div>
-    <div class="intro-right"><img src="img/intro.jpg" alt="Gestión profesional de cubiertas TRM"></div>
+    <div class="intro-right"><img src="img/intro.jpg" alt="Gestión profesional de cubiertas TRM" loading="lazy"></div>
   </div>
 </section>
 
 <!-- FEATURE: HV-SLD -->
 <div>
   <div class="feat reveal">
-    <div class="feat-img"><img src="img/estanqueidad.jpg" alt="Detección de fugas HV-SLD"></div>
+    <div class="feat-img"><img src="img/estanqueidad.jpg" alt="Detección de fugas HV-SLD" loading="lazy"></div>
     <div class="feat-body dark">
       <h3>Detección de fugas con tecnología HV-SLD</h3>
       <p>Con el innovador método HV-SLD, las fugas y zonas potencialmente dañadas se localizan con precisión milimétrica de forma completamente no destructiva.</p>
@@ -452,7 +486,7 @@ footer{background:#27313D;padding:64px 80px 28px}
 <!-- FEATURE: SENSORES -->
 <div>
   <div class="feat rev reveal">
-    <div class="feat-img"><img src="img/rosi.jpg" alt="Sensor de humedad en cubierta plana"></div>
+    <div class="feat-img"><img src="img/rosi.jpg" alt="Sensor de humedad en cubierta plana" loading="lazy"></div>
     <div class="feat-body">
       <h3>Sensores de humedad para monitorización continua</h3>
       <p>Incorporamos sensores de alta sensibilidad que monitorizan la superficie del tejado en tiempo real, emitiendo alertas tempranas antes de que se produzcan filtraciones mayores.</p>
@@ -533,8 +567,8 @@ footer{background:#27313D;padding:64px 80px 28px}
   <div class="certs-in reveal">
     <h3>Certificaciones y membresías</h3>
     <div class="certs-logos">
-      <div class="cert-box"><img src="img/cert-sld.png" alt="SLD Certified License Partner"></div>
-      <div class="cert-box"><img src="img/cert-ral.png" alt="RAL Gütezeichen"></div>
+      <div class="cert-box"><img src="img/cert-sld.png" alt="SLD Certified License Partner" loading="lazy"></div>
+      <div class="cert-box"><img src="img/cert-ral.png" alt="RAL Gütezeichen" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -553,7 +587,7 @@ footer{background:#27313D;padding:64px 80px 28px}
           <p>Con el método HV-SLD localizamos el punto exacto de entrada de agua sin necesidad de desmontajes, entregando un informe técnico completo con fotografías y diagnóstico.</p>
           <a href="/deteccion-de-fugas/" class="btn-l">Más información</a>
         </div>
-        <div class="tp-img"><img src="img/tab1.jpg" alt="Detección de fugas HV"></div>
+        <div class="tp-img"><img src="img/tab1.jpg" alt="Detección de fugas HV" loading="lazy"></div>
       </div>
       <div class="tp">
         <div class="tp-body">
@@ -561,7 +595,7 @@ footer{background:#27313D;padding:64px 80px 28px}
           <p>Sensores de alta sensibilidad instalados bajo la impermeabilización que detectan cualquier incremento de humedad y envían alertas antes de que se produzcan daños.</p>
           <a href="/sensores/" class="btn-l">Más información</a>
         </div>
-        <div class="tp-img"><img src="img/tab4.jpg" alt="Sensor humedad cubierta"></div>
+        <div class="tp-img"><img src="img/tab4.jpg" alt="Sensor humedad cubierta" loading="lazy"></div>
       </div>
       <div class="tp">
         <div class="tp-body">
@@ -569,7 +603,7 @@ footer{background:#27313D;padding:64px 80px 28px}
           <p>Planes de mantenimiento periódicos adaptados a cada nave industrial. Inspecciones técnicas, revisión de sellados, limpieza de canalizaciones y evaluación estructural.</p>
           <a href="/mantenimiento/" class="btn-l">Más información</a>
         </div>
-        <div class="tp-img"><img src="img/tab3.jpg" alt="Mantenimiento cubierta plana"></div>
+        <div class="tp-img"><img src="img/tab3.jpg" alt="Mantenimiento cubierta plana" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -651,8 +685,7 @@ footer{background:#27313D;padding:64px 80px 28px}
 <footer id="contacto">
   <div class="ft-grid">
     <div class="ft-brand">
-      <div class="ft-logo"><img src="img/logo-trm.png" alt="TRM"></div>
-      <p>TRM – Technical Roof Management Spain</p>
+    <p>TRM – Technical Roof Management Spain</p>
       <p>C/ Gregal, Buzón 26</p>
       <p>17185 Vilobí d'Onyar (Girona)</p>
       <p>T <a href="tel:+34643167941">+34 643 167 941</a></p>
@@ -708,4 +741,34 @@ function showTab(i){
 document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
 });
-const cf=document.getElementById
+const cf=document.getElementById('contactForm');
+if(cf) cf.addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('cformMsg').classList.add('show');
+  cf.reset();
+});
+const ham=document.getElementById('navHam');
+const mob=document.getElementById('mobMenu');
+if(ham){
+  ham.addEventListener('click',()=>{
+    const open=mob.classList.toggle('open');
+    ham.classList.toggle('open',open);
+    ham.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    mob.classList.remove('open');ham.classList.remove('open');
+    ham.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }));
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
+},{ passive:true });
+</script>
+</body>
+</html>
