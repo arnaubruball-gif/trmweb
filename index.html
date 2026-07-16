@@ -756,7 +756,10 @@ document.querySelectorAll('.faq-q').forEach(q=>{
 });
 // ==== Captura de leads -> Google Sheet (vía Google Apps Script) ====
 // Pega aquí la URL /exec de tu despliegue de Apps Script (ver instrucciones).
-const LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbyXMTkT8xSDaAOxJyzUIUN-P8mWlyOt6cjBWOw8a_y-KpSQjMER5NAzZP5jLwZ-XTLO/exec';
+// Envío del formulario a nuestra propia función serverless (/api/lead), que
+// reenvía el lead a Google desde el servidor. Al ser mismo dominio, ningún
+// bloqueador del navegador lo bloquea, y podemos leer la respuesta real.
+const LEAD_ENDPOINT='/api/lead';
 const cf=document.getElementById('contactForm');
 if(cf) cf.addEventListener('submit',async e=>{
   e.preventDefault();
@@ -766,18 +769,14 @@ if(cf) cf.addEventListener('submit',async e=>{
   if(cf._gotcha && cf._gotcha.value){return;} // trampa anti-spam: bot rellena el campo oculto
   const btn=cf.querySelector('button[type=submit]');
   const label=btn.textContent;
-  const done=()=>{okMsg.classList.add('show');cf.reset();};
-  // Si aún no hay endpoint configurado, no rompemos la UX: mostramos gracias.
-  if(!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('REEMPLAZAR')===0){
-    console.warn('Formulario sin LEAD_ENDPOINT: el lead no se guarda todavía.');
-    done();return;
-  }
-  const data=new FormData(cf);
-  data.append('origen',location.pathname);
+  const data={origen:location.pathname};
+  new FormData(cf).forEach((v,k)=>{data[k]=v;});
   btn.disabled=true;btn.textContent='Enviando…';
   try{
-    await fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',body:data});
-    done();
+    const res=await fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const j=await res.json().catch(()=>({ok:res.ok}));
+    if(j&&j.ok){okMsg.classList.add('show');cf.reset();}
+    else{errMsg.classList.add('show');}
   }catch(err){
     errMsg.classList.add('show');
   }finally{
