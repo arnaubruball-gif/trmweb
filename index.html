@@ -348,6 +348,9 @@ footer{background:#27313D;padding:64px 80px 28px}
 .cform button:hover{background:var(--blue-dark);transform:translateY(-1px)}
 .cform-msg{display:none;background:#e7f3ec;color:#1e6b3f;padding:14px;font-size:14px;margin-top:14px}
 .cform-msg.show{display:block}
+.cform-msg.err{background:#fdecea;color:#b3261e}
+.cform-msg.err a{color:#b3261e;font-weight:600}
+.cform button:disabled{opacity:.6;cursor:default;transform:none}
 @media(max-width:700px){.cta-grid{grid-template-columns:1fr}}
 
 /* WHATSAPP FLOAT */
@@ -639,8 +642,10 @@ footer{background:#27313D;padding:64px 80px 28px}
         <label for="cf-msg">Mensaje</label>
         <textarea id="cf-msg" name="mensaje" required></textarea>
       </div>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button type="submit">Enviar mensaje</button>
       <div class="cform-msg" id="cformMsg">Gracias, hemos recibido tu mensaje. Te contactaremos en menos de 24 horas.</div>
+      <div class="cform-msg err" id="cformErr">No se ha podido enviar. Escríbenos a <a href="mailto:info@trm-spain.com">info@trm-spain.com</a> o al +34 643 167 941.</div>
     </form>
   </div>
 </section>
@@ -748,11 +753,35 @@ function showTab(i){
 document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
 });
+// ==== Captura de leads -> Google Sheet (vía Google Apps Script) ====
+// Pega aquí la URL /exec de tu despliegue de Apps Script (ver instrucciones).
+const LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbzy25Vsw2FiNpPwxFWx7xRd9A4crN4vr3hRFm5YC4TtTD8KXDPO8iOMo9m0fWqZ7LBV/exec';
 const cf=document.getElementById('contactForm');
-if(cf) cf.addEventListener('submit',e=>{
+if(cf) cf.addEventListener('submit',async e=>{
   e.preventDefault();
-  document.getElementById('cformMsg').classList.add('show');
-  cf.reset();
+  const okMsg=document.getElementById('cformMsg');
+  const errMsg=document.getElementById('cformErr');
+  okMsg.classList.remove('show');errMsg.classList.remove('show');
+  if(cf._gotcha && cf._gotcha.value){return;} // trampa anti-spam: bot rellena el campo oculto
+  const btn=cf.querySelector('button[type=submit]');
+  const label=btn.textContent;
+  const done=()=>{okMsg.classList.add('show');cf.reset();};
+  // Si aún no hay endpoint configurado, no rompemos la UX: mostramos gracias.
+  if(!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('REEMPLAZAR')===0){
+    console.warn('Formulario sin LEAD_ENDPOINT: el lead no se guarda todavía.');
+    done();return;
+  }
+  const data=new FormData(cf);
+  data.append('origen',location.pathname);
+  btn.disabled=true;btn.textContent='Enviando…';
+  try{
+    await fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',body:data});
+    done();
+  }catch(err){
+    errMsg.classList.add('show');
+  }finally{
+    btn.disabled=false;btn.textContent=label;
+  }
 });
 const ham=document.getElementById('navHam');
 const mob=document.getElementById('mobMenu');
