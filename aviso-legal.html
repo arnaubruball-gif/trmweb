@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aviso Legal | TRM – Technical Roof Management Spain</title>
+<meta name="robots" content="noindex, follow">
 <meta name="description" content="Aviso Legal de TRM – Technical Roof Management Spain S.L.">
 <link rel="canonical" href="https://trm-spain.com/aviso-legal.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/fonts.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--blue:#1B3E78;--blue-dark:#122d5a;--text:#27313D;--soft:#5a6472;--border:#dde3ea;--bg:#f5f7fa;--white:#fff;--nav-h:80px}
@@ -27,18 +27,40 @@ ul{margin:0 0 14px 20px;color:var(--soft)}
 li{margin-bottom:8px}
 a.inline{color:var(--blue);text-decoration:none}
 a.inline:hover{text-decoration:underline}
-footer{background:#27313D;padding:36px 24px;text-align:center}
-footer p{color:rgba(255,255,255,.4);font-size:12px}
-footer a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;margin:0 10px}
+/* PRO FOOTER */
+footer{background:#27313D;padding:64px 80px 28px;text-align:left}
+.ft-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:56px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:28px}
+.ft-brand img{height:52px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px;display:block}
+.ft-brand p{font-size:13px;line-height:1.7;color:rgba(255,255,255,.5);margin-bottom:6px}
+.ft-brand a{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;margin:0}
+.ft-brand a:hover{color:white}
+.ft-soc{display:flex;gap:10px;margin-top:16px}
+.ft-si{width:34px;height:34px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .2s,transform .2s;text-decoration:none}
+.ft-si:hover{border-color:rgba(255,255,255,.6);transform:translateY(-2px)}
+.ft-si svg{width:15px;height:15px;fill:rgba(255,255,255,.6)}
+.ft-col h5{color:white;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.ft-col ul{list-style:none;margin:0}
+.ft-col li{margin-bottom:9px}
+.ft-col a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;margin:0}
+.ft-col a:hover{color:white}
+.ft-bot{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.ft-bot p{font-size:12px;color:rgba(255,255,255,.3)}
+.ft-leg{display:flex;gap:20px;flex-wrap:wrap}
+.ft-leg a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;margin:0}
+.ft-leg a:hover{color:rgba(255,255,255,.6)}
+@media(max-width:960px){footer{padding:48px 24px 24px}.ft-grid{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
 @media(max-width:700px){nav{padding:0 20px}.nav-links{gap:14px}.nav-links li:not(:last-child){display:none}}
 </style>
+<meta name="theme-color" content="#1B3E78">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/logo-trm.png">
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-logo"><img src="img/logo-trm.png" alt="TRM"></a>
+  <a href="/" class="nav-logo"><img src="/img/logo-trm.png" alt="TRM"></a>
   <ul class="nav-links">
     <li><a href="/">Inicio</a></li>
-    <li><a href="#cta" class="nav-cta">Contacto</a></li>
+    <li><a href="/#contacto" class="nav-cta">Contacto</a></li>
   </ul>
 </nav>
 
@@ -80,11 +102,73 @@ footer a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;margin:0
   <p>Contacto: <a class="inline" href="mailto:info@trm-spain.com">info@trm-spain.com</a> · <a class="inline" href="tel:+34643167941">+34 643 167 941</a></p>
 </main>
 
-<footer id="cta">
-  <a href="/aviso-legal.html">Aviso legal</a>
-  <a href="/privacidad.html">Política de privacidad</a>
-  <a href="/terminos-condiciones.html">Términos y condiciones</a>
-  <p style="margin-top:14px">© 2025 TRM – Technical Roof Management Spain S.L.</p>
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <img src="/img/logo-trm.png" alt="TRM – Technical Roof Management Spain">
+      <p>TRM – Technical Roof Management Spain, S.L.</p>
+      <p>C/ Gregal, Buzón 26</p>
+      <p>17185 Vilobí d'Onyar (Girona)</p>
+      <p>T <a href="tel:+34643167941">+34 643 167 941</a></p>
+      <p><a href="mailto:info@trm-spain.com">info@trm-spain.com</a></p>
+      <div class="ft-soc">
+        <a href="https://www.linkedin.com/in/marcel-oller-6564493b7/" class="ft-si" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="/deteccion-de-fugas/">Detección de fugas</a></li>
+        <li><a href="/sensores/">Sensores de humedad</a></li>
+        <li><a href="/mantenimiento/">Mantenimiento de cubiertas</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Empresa</h5>
+      <ul>
+        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
+        <li><a href="/#faq">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="/aviso-legal.html">Aviso legal</a></li>
+        <li><a href="/privacidad.html">Política de privacidad</a></li>
+        <li><a href="/cookies.html">Política de cookies</a></li>
+        <li><a href="/terminos-condiciones.html">Términos y condiciones</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 TRM – Technical Roof Management Spain, S.L. · Vilobí d'Onyar (Girona)</p>
+    <div class="ft-leg">
+      <a href="/aviso-legal.html">Aviso legal</a>
+      <a href="/privacidad.html">Privacidad</a>
+      <a href="/cookies.html">Cookies</a>
+      <a href="/terminos-condiciones.html">Condiciones</a>
+    </div>
+  </div>
 </footer>
+
+<div class="cookie-bar hide" id="cookieBar" role="dialog" aria-label="Aviso de cookies">
+  <p>Utilizamos únicamente cookies técnicas propias necesarias para el funcionamiento del sitio. Más información en nuestra <a href="/cookies.html">Política de cookies</a>.</p>
+  <button type="button" id="cookieOk">Aceptar</button>
+</div>
+<style>
+.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:600;max-width:940px;margin:0 auto;background:#27313D;color:rgba(255,255,255,.88);display:flex;align-items:center;gap:18px;padding:16px 20px;box-shadow:0 8px 30px rgba(0,0,0,.28);border-radius:4px;font-size:14px;line-height:1.5}
+.cookie-bar p{margin:0;flex:1}
+.cookie-bar a{color:#7ab4e8;text-decoration:underline}
+.cookie-bar button{flex-shrink:0;background:#1B3E78;color:#fff;border:none;padding:10px 24px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;border-radius:2px;transition:background .2s}
+.cookie-bar button:hover{background:#122d5a}
+.cookie-bar.hide{display:none}
+@media(max-width:600px){.cookie-bar{flex-direction:column;align-items:stretch;text-align:center;bottom:12px;left:12px;right:12px}.cookie-bar button{width:100%}}
+</style>
+<script>
+(function(){var ok=false;try{ok=localStorage.getItem('trm_cookie_ok')==='1'}catch(e){}
+if(ok)return;var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
+var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',function(){try{localStorage.setItem('trm_cookie_ok','1')}catch(e){}b.classList.add('hide')})})();
+</script>
 </body>
 </html>

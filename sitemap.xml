@@ -1,29 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://trm-spain.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/hero.jpg</image:loc>
+      <image:caption>Técnico de TRM inspeccionando una cubierta plana industrial en España</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/intro.jpg</image:loc>
+      <image:caption>Gestión profesional y mantenimiento de cubiertas planas</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/estanqueidad.jpg</image:loc>
+      <image:caption>Prueba de estanqueidad y detección de fugas con método HV-SLD</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/rosi.jpg</image:loc>
+      <image:caption>Sensor de humedad instalado en una cubierta plana</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/tab1.jpg</image:loc>
+      <image:caption>Detección de fugas en cubiertas sin obras con tecnología HV</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/tab4.jpg</image:loc>
+      <image:caption>Sensores de humedad para la monitorización de cubiertas</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/tab3.jpg</image:loc>
+      <image:caption>Mantenimiento preventivo de cubierta plana industrial</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/cert-sld.png</image:loc>
+      <image:caption>Certificación SLD para detección de fugas en cubiertas</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/cert-ral.png</image:loc>
+      <image:caption>Sello de calidad RAL Gütezeichen</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://trm-spain.com/deteccion-de-fugas/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/deteccion-tecnico-rosi.jpg</image:loc>
+      <image:caption>Técnico de TRM localizando una fuga en una cubierta plana</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/deteccion-tablet.jpg</image:loc>
+      <image:caption>Diagnóstico digital de fugas en cubierta con equipo HV-SLD</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/deteccion-sellante.jpg</image:loc>
+      <image:caption>Revisión de sellados en la detección de fugas de cubierta</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://trm-spain.com/mantenimiento/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/mantenimiento-limpieza1.jpg</image:loc>
+      <image:caption>Limpieza y mantenimiento de sumideros en una cubierta plana</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/mantenimiento-limpieza2.jpg</image:loc>
+      <image:caption>Técnico realizando el mantenimiento de una cubierta industrial</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://trm-spain.com/sensores/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/monitorizacion-iot.jpg</image:loc>
+      <image:caption>Monitorización IoT de la humedad en cubiertas planas</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/sensor-corte-3d-1.png</image:loc>
+      <image:caption>Esquema 3D del sensor de humedad para cubiertas</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/sensor-corte-verde.jpg</image:loc>
+      <image:caption>Detalle del sensor de humedad de TRM para cubiertas</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://trm-spain.com/sobre-nosotros/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://trm-spain.com/img/monitorizacion-iot.jpg</image:loc>
+      <image:caption>TRM, empresa independiente de gestión y monitorización de cubiertas</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://trm-spain.com/aviso-legal.html</loc>
@@ -32,6 +105,11 @@
   </url>
   <url>
     <loc>https://trm-spain.com/privacidad.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://trm-spain.com/cookies.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

@@ -109,10 +109,7 @@
   ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="/css/fonts.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -418,6 +415,11 @@ footer{background:#27313D;padding:64px 80px 28px}
 .mob-menu a:hover{color:var(--blue)}
 .mob-menu .mob-cta{margin-top:24px;background:var(--blue);color:white!important;text-align:center;padding:16px 24px;border:none;border-bottom:none}
 </style>
+<meta name="theme-color" content="#1B3E78">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/logo-trm.png">
+<meta property="og:site_name" content="TRM – Technical Roof Management Spain">
+<meta property="og:locale" content="es_ES">
 </head>
 <body>
 
@@ -710,15 +712,16 @@ footer{background:#27313D;padding:64px 80px 28px}
       <ul>
         <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
       </ul>
     </div>
     <div class="ft-col">
-      <h5>Contacto</h5>
+      <h5>Legal</h5>
       <ul>
-        <li><a href="tel:+34643167941">+34 643 167 941</a></li>
-        <li><a href="mailto:info@trm-spain.com">info@trm-spain.com</a></li>
         <li><a href="/aviso-legal.html">Aviso legal</a></li>
         <li><a href="/privacidad.html">Política de privacidad</a></li>
+        <li><a href="/cookies.html">Política de cookies</a></li>
+        <li><a href="/terminos-condiciones.html">Términos y condiciones</a></li>
       </ul>
     </div>
   </div>
@@ -727,6 +730,7 @@ footer{background:#27313D;padding:64px 80px 28px}
     <div class="ft-leg">
       <a href="/aviso-legal.html">Aviso legal</a>
       <a href="/privacidad.html">Privacidad</a>
+      <a href="/cookies.html">Cookies</a>
       <a href="/terminos-condiciones.html">Condiciones</a>
     </div>
   </div>
@@ -772,6 +776,25 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
 },{ passive:true });
+</script>
+
+<div class="cookie-bar hide" id="cookieBar" role="dialog" aria-label="Aviso de cookies">
+  <p>Utilizamos únicamente cookies técnicas propias necesarias para el funcionamiento del sitio. Más información en nuestra <a href="/cookies.html">Política de cookies</a>.</p>
+  <button type="button" id="cookieOk">Aceptar</button>
+</div>
+<style>
+.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:600;max-width:940px;margin:0 auto;background:#27313D;color:rgba(255,255,255,.88);display:flex;align-items:center;gap:18px;padding:16px 20px;box-shadow:0 8px 30px rgba(0,0,0,.28);border-radius:4px;font-size:14px;line-height:1.5}
+.cookie-bar p{margin:0;flex:1}
+.cookie-bar a{color:#7ab4e8;text-decoration:underline}
+.cookie-bar button{flex-shrink:0;background:#1B3E78;color:#fff;border:none;padding:10px 24px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;border-radius:2px;transition:background .2s}
+.cookie-bar button:hover{background:#122d5a}
+.cookie-bar.hide{display:none}
+@media(max-width:600px){.cookie-bar{flex-direction:column;align-items:stretch;text-align:center;bottom:12px;left:12px;right:12px}.cookie-bar button{width:100%}}
+</style>
+<script>
+(function(){var ok=false;try{ok=localStorage.getItem('trm_cookie_ok')==='1'}catch(e){}
+if(ok)return;var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
+var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',function(){try{localStorage.setItem('trm_cookie_ok','1')}catch(e){}b.classList.add('hide')})})();
 </script>
 </body>
 </html>
