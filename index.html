@@ -417,6 +417,14 @@ footer{background:#27313D;padding:64px 80px 28px}
 .mob-menu a{font-size:20px;font-weight:600;color:var(--text);text-decoration:none;padding:18px 0;border-bottom:1px solid var(--border);transition:color .2s}
 .mob-menu a:hover{color:var(--blue)}
 .mob-menu .mob-cta{margin-top:24px;background:var(--blue);color:white!important;text-align:center;padding:16px 24px;border:none;border-bottom:none}
+
+/* CTA ACTIONS */
+.cta-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start;margin-top:8px;max-width:340px}
+.cta-actions .btn-w{margin:0;width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+#cta .cta-actions{margin-left:auto;margin-right:auto}
+.btn-wa{background:#25D366!important;color:#fff!important}
+.btn-wa:hover{background:#1eb457!important}
+.btn-wa svg{width:18px;height:18px;fill:currentColor}
 </style>
 <meta name="theme-color" content="#1B3E78">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -622,9 +630,11 @@ footer{background:#27313D;padding:64px 80px 28px}
     <div class="cta-info">
       <h2>¿Quieres un presupuesto?</h2>
       <p>Nuestro equipo técnico te responde en menos de 24 horas.</p>
-      <a href="tel:+34643167941" class="btn-w">Llamar +34 643 167 941</a>
-      <a href="https://wa.me/34643167941?text=Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20gesti%C3%B3n%20de%20cubiertas" class="btn-w" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="mailto:admin@trm-spain.com" class="btn-w">admin@trm-spain.com</a>
+      <div class="cta-actions">
+        <a href="tel:+34643167941" class="btn-w btn-call">Llamar +34 643 167 941</a>
+        <a href="https://wa.me/34643167941?text=Hola%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20gesti%C3%B3n%20de%20cubiertas" class="btn-w btn-wa" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:admin@trm-spain.com" class="btn-w">admin@trm-spain.com</a>
+      </div>
     </div>
     <form class="cform" id="contactForm">
       <div class="f-row">
