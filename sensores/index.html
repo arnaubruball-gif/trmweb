@@ -87,7 +87,7 @@ footer{background:#27313D;padding:48px 80px 24px}
 .ft-simple-links a:hover{color:white}
 .ft-copy{max-width:1280px;margin:0 auto;font-size:12px;color:rgba(255,255,255,.3)}
 /* WHATSAPP FLOAT */
-.wa-float{position:fixed;bottom:24px;left:24px;z-index:500;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s}
+.wa-float{position:fixed;bottom:24px;left:24px;z-index:500;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:bottom .25s ease,transform .2s,box-shadow .2s}
 .wa-float:hover{transform:scale(1.08);box-shadow:0 10px 26px rgba(0,0,0,.32)}
 .wa-float svg{width:28px;height:28px;fill:white}
 @media(max-width:960px){.wa-float{bottom:16px;left:16px;width:52px;height:52px}}
@@ -145,6 +145,19 @@ footer{background:#27313D;padding:64px 80px 28px}
 .mob-menu a:hover{color:var(--blue)}
 .mob-menu .mob-cta{margin-top:24px;background:var(--blue);color:white!important;text-align:center;padding:16px 24px;border:none;border-bottom:none}
 @media(max-width:960px){.nav-ham{display:flex}}
+
+/* EMERGENCY BADGE */
+.emg-badge{transition:bottom .25s ease;position:fixed;bottom:24px;right:24px;z-index:500;background:#fff;border:1.5px solid #e0483e;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.15);padding:10px 26px 10px 14px;max-width:210px;font-size:12.5px;line-height:1.4;color:var(--text);animation:emgPop .4s ease .6s both}
+.emg-badge a{color:var(--text);text-decoration:none;display:block}
+.emg-badge strong{color:#e0483e}
+.emg-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e0483e;margin-right:5px;animation:emgPulse 1.6s ease-in-out infinite;flex-shrink:0}
+.emg-close{position:absolute;top:2px;right:6px;background:none;border:none;font-size:16px;line-height:1;color:var(--soft);cursor:pointer;padding:4px}
+.emg-close:hover{color:var(--text)}
+.emg-badge.hide{display:none}
+@keyframes emgPop{from{opacity:0;transform:translateY(8px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes emgPulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media(max-width:960px){.emg-badge{bottom:16px;right:16px;max-width:180px;font-size:12px;padding:9px 24px 9px 12px}}
+@media(prefers-reduced-motion:reduce){.emg-badge{animation:none}.emg-dot{animation:none}}
 </style>
 <meta name="theme-color" content="#1B3E78">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -297,7 +310,7 @@ footer{background:#27313D;padding:64px 80px 28px}
       <h5>Empresa</h5>
       <ul>
         <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
-        <li><a href="/#contacto">Contacto</a></li>
+        <li><a href="/#cta">Contacto</a></li>
         <li><a href="/#faq">Preguntas frecuentes</a></li>
       </ul>
     </div>
@@ -348,6 +361,14 @@ if('IntersectionObserver' in window){
 .cookie-bar.hide{display:none}
 @media(max-width:600px){.cookie-bar{flex-direction:column;align-items:stretch;text-align:center;bottom:12px;left:12px;right:12px}.cookie-bar button{width:100%}}
 </style>
+
+<div class="emg-badge" id="emgBadge">
+  <button type="button" class="emg-close" id="emgClose" aria-label="Cerrar aviso de emergencia">×</button>
+  <a href="tel:+34643167941" aria-label="Emergencia: fuga activa, llamar ahora al 643 167 941">
+    <span class="emg-dot"></span>¿Fuga activa?<br><strong>Emergencia 24h · Llamar</strong>
+  </a>
+</div>
+
 <script>
 (function(){var ok=false;try{ok=localStorage.getItem('trm_cookie_ok')==='1'}catch(e){}
 if(ok)return;var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
@@ -355,6 +376,58 @@ var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',
 (function(){var ham=document.getElementById('navHam'),mob=document.getElementById('mobMenu');if(!ham||!mob)return;
 ham.addEventListener('click',function(){var open=mob.classList.toggle('open');ham.classList.toggle('open',open);ham.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';});
 mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';});});})();
+
+(function(){
+  document.querySelectorAll('.cta-actions a[href^="mailto:"]').forEach(function(a){
+    var email=a.getAttribute('href').replace('mailto:','').split('?')[0];
+    var original=a.textContent;
+    a.addEventListener('click',function(){
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(email).then(function(){
+          a.textContent='¡Copiado! '+email;
+          setTimeout(function(){a.textContent=original;},2200);
+        }).catch(function(){});
+      }
+    });
+  });
+})();
+
+(function(){
+  var badge=document.getElementById('emgBadge');
+  if(!badge)return;
+  var dismissed=false;
+  try{dismissed=localStorage.getItem('trm_emg_dismissed')==='1'}catch(e){}
+  if(dismissed){badge.classList.add('hide');return;}
+  var close=document.getElementById('emgClose');
+  if(close)close.addEventListener('click',function(e){
+    e.preventDefault();e.stopPropagation();
+    badge.classList.add('hide');
+    try{localStorage.setItem('trm_emg_dismissed','1')}catch(e){}
+  });
+})();
+
+(function(){
+  var bar=document.getElementById('cookieBar');
+  var wa=document.querySelector('.wa-float');
+  var emg=document.getElementById('emgBadge');
+  if(!bar||(!wa&&!emg))return;
+  function reposition(){
+    if(bar.classList.contains('hide')){
+      if(wa)wa.style.bottom='';
+      if(emg)emg.style.bottom='';
+      return;
+    }
+    var h=bar.getBoundingClientRect().height;
+    var base=window.innerWidth<=960?16:24;
+    var newBottom=(h+14+base)+'px';
+    if(wa)wa.style.bottom=newBottom;
+    if(emg)emg.style.bottom=newBottom;
+  }
+  reposition();
+  window.addEventListener('resize',reposition);
+  var btn=document.getElementById('cookieOk');
+  if(btn)btn.addEventListener('click',function(){setTimeout(reposition,0);});
+})();
 </script>
 </body>
 </html>

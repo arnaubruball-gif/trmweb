@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRM – Technical Roof Management | Detección de fugas en cubiertas planas España</title>
-<meta name="description" content="¿Problemas de fugas, humedad o mantenimiento en tu cubierta? TRM es la empresa de mantenimiento de cubiertas planas e industriales en toda España: detección de fugas sin obras, sensores de humedad y planes de mantenimiento preventivo. Servicio independiente, certificado ISO y neutral.">
+<meta name="description" content="¿Problemas de fugas, humedad o mantenimiento en tu cubierta? TRM es la empresa de mantenimiento de cubiertas planas e industriales en toda España: detección de fugas sin obras, sensores de humedad y planes de mantenimiento preventivo. Servicio independiente y neutral.">
 <meta name="keywords" content="fugas cubierta, detección de fugas tejado, fuga en el tejado, goteras cubierta plana, sensores de humedad cubierta, mantenimiento de cubiertas industriales, mantenimiento cubierta plana, mantenimiento preventivo cubiertas, empresa de mantenimiento de cubiertas España, revisión periódica cubierta industrial, impermeabilización cubierta plana, empresa detección de fugas España">
 <link rel="canonical" href="https://trm-spain.com/">
 <meta property="og:type" content="website">
@@ -79,7 +79,7 @@
       "name": "¿Qué empresa puede inspeccionar y certificar el estado de una cubierta plana en España?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "TRM – Technical Roof Management es una empresa independiente, certificada ISO y neutral (sin vínculos con fabricantes ni instaladores), especializada en detección de fugas, sensores de humedad y mantenimiento de cubiertas planas en toda España."
+        "text": "TRM – Technical Roof Management es una empresa independiente y neutral (sin vínculos con fabricantes ni instaladores), especializada en detección de fugas, sensores de humedad y mantenimiento de cubiertas planas en toda España."
       }
     },
     {
@@ -103,7 +103,7 @@
       "name": "¿Cuál es la mejor empresa de mantenimiento de cubiertas en España?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "TRM – Technical Roof Management es una empresa independiente y certificada (ISO 9001 y ISO 45001) especializada en mantenimiento de cubiertas planas e industriales en toda España, sin vínculos comerciales con fabricantes ni instaladores, lo que garantiza diagnósticos y recomendaciones totalmente objetivos."
+        "text": "TRM – Technical Roof Management es una empresa independiente especializada en mantenimiento de cubiertas planas e industriales en toda España, sin vínculos comerciales con fabricantes ni instaladores, lo que garantiza diagnósticos y recomendaciones totalmente objetivos."
       }
     }
   ]
@@ -212,6 +212,14 @@ p.sp{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:16px}
 .intro-right{overflow:hidden}
 .intro-right img{width:100%;height:420px;object-fit:cover;display:block;transition:transform .6s ease}
 .intro-right:hover img{transform:scale(1.06)}
+
+/* STATS */
+#stats{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-inner{max-width:1100px;margin:0 auto;padding:64px 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.stat-item{padding:0 20px}
+.stat-num{font-size:clamp(34px,5vw,52px);font-weight:700;color:var(--blue);line-height:1.1;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.stat-item p{font-size:15px;color:var(--soft);font-weight:600}
+@media(max-width:960px){.stats-inner{grid-template-columns:1fr;gap:32px;padding:48px 24px}}
 
 /* FEAT SPLIT */
 .feat{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
@@ -354,7 +362,7 @@ footer{background:#27313D;padding:64px 80px 28px}
 @media(max-width:700px){.cta-grid{grid-template-columns:1fr}}
 
 /* WHATSAPP FLOAT */
-.wa-float{position:fixed;bottom:24px;left:24px;z-index:500;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s}
+.wa-float{position:fixed;bottom:24px;left:24px;z-index:500;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:bottom .25s ease,transform .2s,box-shadow .2s}
 .wa-float:hover{transform:scale(1.08);box-shadow:0 10px 26px rgba(0,0,0,.32)}
 .wa-float svg{width:28px;height:28px;fill:white}
 @media(max-width:960px){.wa-float{bottom:16px;left:16px;width:52px;height:52px}}
@@ -425,6 +433,19 @@ footer{background:#27313D;padding:64px 80px 28px}
 .btn-wa{background:#25D366!important;color:#fff!important}
 .btn-wa:hover{background:#1eb457!important}
 .btn-wa svg{width:18px;height:18px;fill:currentColor}
+
+/* EMERGENCY BADGE */
+.emg-badge{transition:bottom .25s ease;position:fixed;bottom:24px;right:24px;z-index:500;background:#fff;border:1.5px solid #e0483e;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.15);padding:10px 26px 10px 14px;max-width:210px;font-size:12.5px;line-height:1.4;color:var(--text);animation:emgPop .4s ease .6s both}
+.emg-badge a{color:var(--text);text-decoration:none;display:block}
+.emg-badge strong{color:#e0483e}
+.emg-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e0483e;margin-right:5px;animation:emgPulse 1.6s ease-in-out infinite;flex-shrink:0}
+.emg-close{position:absolute;top:2px;right:6px;background:none;border:none;font-size:16px;line-height:1;color:var(--soft);cursor:pointer;padding:4px}
+.emg-close:hover{color:var(--text)}
+.emg-badge.hide{display:none}
+@keyframes emgPop{from{opacity:0;transform:translateY(8px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes emgPulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media(max-width:960px){.emg-badge{bottom:16px;right:16px;max-width:180px;font-size:12px;padding:9px 24px 9px 12px}}
+@media(prefers-reduced-motion:reduce){.emg-badge{animation:none}.emg-dot{animation:none}}
 </style>
 <meta name="theme-color" content="#1B3E78">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -441,7 +462,7 @@ footer{background:#27313D;padding:64px 80px 28px}
     <li><a href="/mantenimiento/">Mantenimiento</a></li>
     <li><a href="/sensores/">Sensores de humedad</a></li>
     <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
-    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    <li><a href="#cta" class="nav-cta">Contacto</a></li>
   </ul>
   <button class="nav-ham" id="navHam" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -450,7 +471,7 @@ footer{background:#27313D;padding:64px 80px 28px}
   <a href="/mantenimiento/">Mantenimiento</a>
   <a href="/sensores/">Sensores de humedad</a>
   <a href="/sobre-nosotros/">Sobre nosotros</a>
-  <a href="#contacto" class="mob-cta">Contacto</a>
+  <a href="#cta" class="mob-cta">Contacto</a>
 </div>
 
 <section id="hero">
@@ -478,6 +499,24 @@ footer{background:#27313D;padding:64px 80px 28px}
       <a href="/sobre-nosotros/" class="btn-p">Sobre nosotros</a>
     </div>
     <div class="intro-right"><img src="img/intro.jpg" alt="Gestión profesional de cubiertas TRM" loading="lazy" width="1200" height="900"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-inner reveal">
+    <div class="stat-item">
+      <div class="stat-num" data-target="100000" data-prefix="+" data-suffix=" m²">0</div>
+      <p>Cubierta inspeccionada</p>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="1200" data-prefix="+" data-suffix="">0</div>
+      <p>Fugas detectadas con precisión</p>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="20" data-prefix="" data-suffix="">0</div>
+      <p>Clientes satisfechos</p>
+    </div>
   </div>
 </section>
 
@@ -528,7 +567,7 @@ footer{background:#27313D;padding:64px 80px 28px}
     <div class="icard">
       <h4>Informe técnico completo tras cada intervención</h4>
       <p>Protocolo verificable con reportaje fotográfico, diagnóstico detallado, análisis de riesgos, identificación de puntos críticos y recomendaciones técnicas específicas.</p>
-      <a href="#contacto" class="btn-l">Solicitar presupuesto</a>
+      <a href="#cta" class="btn-l">Solicitar presupuesto</a>
     </div>
   </div>
 </div>
@@ -540,7 +579,7 @@ footer{background:#27313D;padding:64px 80px 28px}
     <div class="ben-item">
       <div class="ben-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
       <h4>Certificados</h4>
-      <p>Certificados ISO y conformes a la normativa vigente en España</p>
+      <p>Certificación SLD y sello de calidad RAL Gütezeichen</p>
     </div>
     <div class="ben-item">
       <div class="ben-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
@@ -678,7 +717,7 @@ footer{background:#27313D;padding:64px 80px 28px}
     </div>
     <div class="faq-item">
       <div class="faq-q">¿Qué empresa puede inspeccionar y certificar el estado de una cubierta plana en España?</div>
-      <div class="faq-a">TRM – Technical Roof Management es una empresa independiente, certificada ISO y neutral, especializada en detección de fugas, sensores de humedad y mantenimiento de cubiertas planas en toda España.</div>
+      <div class="faq-a">TRM – Technical Roof Management es una empresa independiente y neutral, especializada en detección de fugas, sensores de humedad y mantenimiento de cubiertas planas en toda España.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">¿Qué incluye el mantenimiento de una cubierta plana o industrial?</div>
@@ -690,7 +729,7 @@ footer{background:#27313D;padding:64px 80px 28px}
     </div>
     <div class="faq-item">
       <div class="faq-q">¿Cuál es la mejor empresa de mantenimiento de cubiertas en España?</div>
-      <div class="faq-a">TRM – Technical Roof Management: empresa independiente y certificada (ISO 9001 y ISO 45001) especializada en mantenimiento de cubiertas planas e industriales en toda España, sin vínculos comerciales con fabricantes ni instaladores.</div>
+      <div class="faq-a">TRM – Technical Roof Management: empresa independiente especializada en mantenimiento de cubiertas planas e industriales en toda España, sin vínculos comerciales con fabricantes ni instaladores.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">¿El informe técnico puede utilizarse en una reclamación?</div>
@@ -703,7 +742,7 @@ footer{background:#27313D;padding:64px 80px 28px}
   </div>
 </section>
 
-<footer id="contacto">
+<footer>
   <div class="ft-grid">
     <div class="ft-brand">
     <p>TRM – Technical Roof Management Spain</p>
@@ -727,7 +766,7 @@ footer{background:#27313D;padding:64px 80px 28px}
       <h5>Empresa</h5>
       <ul>
         <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#cta">Contacto</a></li>
         <li><a href="#faq">Preguntas frecuentes</a></li>
       </ul>
     </div>
@@ -808,8 +847,35 @@ if(ham){
     document.body.style.overflow='';
   }));
 }
+function formatMiles(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
+function animateStat(el){
+  if(el.dataset.animated)return;
+  el.dataset.animated='1';
+  const target=parseInt(el.dataset.target,10);
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    el.textContent=prefix+formatMiles(target)+suffix;
+    return;
+  }
+  const dur=1400;
+  const t0=performance.now();
+  function tick(now){
+    const p=Math.min(1,(now-t0)/dur);
+    const eased=1-Math.pow(1-p,3);
+    const val=Math.round(target*eased);
+    el.textContent=prefix+formatMiles(val)+suffix;
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
 const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.stat-num').forEach(animateStat);
+    }
+  });
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{
@@ -830,10 +896,70 @@ window.addEventListener('scroll',()=>{
 .cookie-bar.hide{display:none}
 @media(max-width:600px){.cookie-bar{flex-direction:column;align-items:stretch;text-align:center;bottom:12px;left:12px;right:12px}.cookie-bar button{width:100%}}
 </style>
+
+<div class="emg-badge" id="emgBadge">
+  <button type="button" class="emg-close" id="emgClose" aria-label="Cerrar aviso de emergencia">×</button>
+  <a href="tel:+34643167941" aria-label="Emergencia: fuga activa, llamar ahora al 643 167 941">
+    <span class="emg-dot"></span>¿Fuga activa?<br><strong>Emergencia 24h · Llamar</strong>
+  </a>
+</div>
+
 <script>
 (function(){var ok=false;try{ok=localStorage.getItem('trm_cookie_ok')==='1'}catch(e){}
 if(ok)return;var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
 var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',function(){try{localStorage.setItem('trm_cookie_ok','1')}catch(e){}b.classList.add('hide')})})();
+
+(function(){
+  document.querySelectorAll('.cta-actions a[href^="mailto:"]').forEach(function(a){
+    var email=a.getAttribute('href').replace('mailto:','').split('?')[0];
+    var original=a.textContent;
+    a.addEventListener('click',function(){
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(email).then(function(){
+          a.textContent='¡Copiado! '+email;
+          setTimeout(function(){a.textContent=original;},2200);
+        }).catch(function(){});
+      }
+    });
+  });
+})();
+
+(function(){
+  var badge=document.getElementById('emgBadge');
+  if(!badge)return;
+  var dismissed=false;
+  try{dismissed=localStorage.getItem('trm_emg_dismissed')==='1'}catch(e){}
+  if(dismissed){badge.classList.add('hide');return;}
+  var close=document.getElementById('emgClose');
+  if(close)close.addEventListener('click',function(e){
+    e.preventDefault();e.stopPropagation();
+    badge.classList.add('hide');
+    try{localStorage.setItem('trm_emg_dismissed','1')}catch(e){}
+  });
+})();
+
+(function(){
+  var bar=document.getElementById('cookieBar');
+  var wa=document.querySelector('.wa-float');
+  var emg=document.getElementById('emgBadge');
+  if(!bar||(!wa&&!emg))return;
+  function reposition(){
+    if(bar.classList.contains('hide')){
+      if(wa)wa.style.bottom='';
+      if(emg)emg.style.bottom='';
+      return;
+    }
+    var h=bar.getBoundingClientRect().height;
+    var base=window.innerWidth<=960?16:24;
+    var newBottom=(h+14+base)+'px';
+    if(wa)wa.style.bottom=newBottom;
+    if(emg)emg.style.bottom=newBottom;
+  }
+  reposition();
+  window.addEventListener('resize',reposition);
+  var btn=document.getElementById('cookieOk');
+  if(btn)btn.addEventListener('click',function(){setTimeout(reposition,0);});
+})();
 </script>
 </body>
 </html>
