@@ -897,7 +897,8 @@ function loadGTM(){
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5T2T94K8');
 }
 (function(){var ok=false;try{ok=localStorage.getItem('trm_cookie_ok')==='1'}catch(e){}
-if(ok){loadGTM();return;}
+var isGtmDebug=/[?&](gtm_debug|gtm_preview|gtm_auth)=/.test(location.search);
+if(ok||isGtmDebug){loadGTM();return;}
 var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
 var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',function(){try{localStorage.setItem('trm_cookie_ok','1')}catch(e){}b.classList.add('hide');loadGTM();})})();
 
