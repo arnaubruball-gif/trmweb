@@ -432,7 +432,7 @@ if('IntersectionObserver' in window){
 </script>
 
 <div class="cookie-bar hide" id="cookieBar" role="dialog" aria-label="Aviso de cookies">
-  <p>Utilizamos únicamente cookies técnicas propias necesarias para el funcionamiento del sitio. Más información en nuestra <a href="/cookies.html">Política de cookies</a>.</p>
+  <p>Utilizamos cookies técnicas necesarias y, si aceptas, cookies analíticas para mejorar el sitio. Más información en nuestra <a href="/cookies.html">Política de cookies</a>.</p>
   <button type="button" id="cookieOk">Aceptar</button>
 </div>
 <style>
@@ -453,9 +453,15 @@ if('IntersectionObserver' in window){
 </div>
 
 <script>
+function loadGTM(){
+  if(window.__gtmLoaded)return;
+  window.__gtmLoaded=true;
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5T2T94K8');
+}
 (function(){var ok=false;try{ok=localStorage.getItem('trm_cookie_ok')==='1'}catch(e){}
-if(ok)return;var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
-var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',function(){try{localStorage.setItem('trm_cookie_ok','1')}catch(e){}b.classList.add('hide')})})();
+if(ok){loadGTM();return;}
+var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
+var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',function(){try{localStorage.setItem('trm_cookie_ok','1')}catch(e){}b.classList.add('hide');loadGTM();})})();
 (function(){var ham=document.getElementById('navHam'),mob=document.getElementById('mobMenu');if(!ham||!mob)return;
 ham.addEventListener('click',function(){var open=mob.classList.toggle('open');ham.classList.toggle('open',open);ham.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';});
 mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';});});})();

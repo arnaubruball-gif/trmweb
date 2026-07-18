@@ -76,8 +76,8 @@ footer{background:#27313D;padding:64px 80px 28px}
   <p>Una cookie es un pequeño archivo de texto que un sitio web almacena en el navegador o dispositivo del usuario cuando lo visita. Las cookies permiten que el sitio recuerde información sobre la visita, facilitando la navegación y haciendo que el sitio resulte más útil.</p>
 
   <h2>2. ¿Utiliza este sitio web cookies?</h2>
-  <p>Este sitio web es fundamentalmente informativo y utiliza únicamente las cookies estrictamente necesarias para su correcto funcionamiento. No empleamos cookies publicitarias ni de seguimiento con fines comerciales, y no elaboramos perfiles de los usuarios.</p>
-  <p>Todos los recursos del sitio (incluidas las tipografías) se sirven desde nuestro propio dominio, por lo que la navegación no genera peticiones a servidores de terceros con fines de seguimiento.</p>
+  <p>Este sitio web utiliza cookies técnicas necesarias para su funcionamiento y, únicamente si aceptas el aviso de cookies, cookies analíticas para conocer de forma agregada cómo se usa el sitio (páginas más visitadas, procedencia del tráfico, etc.). No empleamos cookies publicitarias ni elaboramos perfiles con fines comerciales.</p>
+  <p>Las cookies analíticas <strong>no se instalan hasta que aceptas el aviso de cookies</strong>. Si no aceptas, el sitio funciona con normalidad usando únicamente cookies técnicas.</p>
 
   <h2>3. Tipos de cookies utilizadas</h2>
   <div class="tbl-wrap">
@@ -88,13 +88,14 @@ footer{background:#27313D;padding:64px 80px 28px}
     <tbody>
       <tr><td>Técnicas / necesarias</td><td>Garantizar el funcionamiento básico del sitio y la seguridad de la navegación.</td><td>Sesión</td></tr>
       <tr><td>Preferencia (aviso de cookies)</td><td>Recordar que el usuario ha cerrado el aviso de cookies para no volver a mostrarlo.</td><td>Persistente (navegador)</td></tr>
+      <tr><td>Analíticas (Google Analytics, vía Google Tag Manager) — solo si aceptas</td><td>Medir de forma agregada las visitas y el uso del sitio para mejorar nuestros contenidos y servicios.</td><td>Hasta 2 años (<code>_ga</code>) / sesión (<code>_ga_*</code>)</td></tr>
     </tbody>
   </table>
   </div>
-  <p>Para recordar que has cerrado el aviso de cookies utilizamos el almacenamiento local del navegador (<em>localStorage</em>), que no se transmite a ningún servidor. En caso de incorporar en el futuro cookies analíticas o de terceros que traten datos personales, se solicitará previamente el consentimiento del usuario y se actualizará la presente política.</p>
+  <p>Para recordar que has cerrado el aviso de cookies utilizamos el almacenamiento local del navegador (<em>localStorage</em>), que no se transmite a ningún servidor.</p>
 
   <h2>4. Cookies de terceros</h2>
-  <p>Actualmente este sitio web no instala cookies de terceros ni carga recursos externos que realicen seguimiento de los usuarios. Si en el futuro se integrasen servicios de terceros (por ejemplo, herramientas de analítica), se informará en esta política y dispondrás de sus respectivas políticas de privacidad.</p>
+  <p>Si aceptas el aviso de cookies, se carga Google Tag Manager, que activa Google Analytics 4 para la medición de audiencia del sitio. Google LLC puede actuar como encargado del tratamiento de estos datos conforme a su propia política de privacidad: <a class="inline" href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>. Si no aceptas el aviso, estas cookies no se instalan.</p>
 
   <h2>5. ¿Cómo gestionar o desactivar las cookies?</h2>
   <p>El usuario puede permitir, bloquear o eliminar las cookies instaladas en su equipo configurando las opciones del navegador. A continuación se indican los enlaces de ayuda de los principales navegadores:</p>
@@ -162,7 +163,7 @@ footer{background:#27313D;padding:64px 80px 28px}
 </footer>
 
 <div class="cookie-bar hide" id="cookieBar" role="dialog" aria-label="Aviso de cookies">
-  <p>Utilizamos únicamente cookies técnicas propias necesarias para el funcionamiento del sitio. Más información en nuestra <a href="/cookies.html">Política de cookies</a>.</p>
+  <p>Utilizamos cookies técnicas necesarias y, si aceptas, cookies analíticas para mejorar el sitio. Más información en nuestra <a href="/cookies.html">Política de cookies</a>.</p>
   <button type="button" id="cookieOk">Aceptar</button>
 </div>
 <style>
@@ -175,9 +176,15 @@ footer{background:#27313D;padding:64px 80px 28px}
 @media(max-width:600px){.cookie-bar{flex-direction:column;align-items:stretch;text-align:center;bottom:12px;left:12px;right:12px}.cookie-bar button{width:100%}}
 </style>
 <script>
+function loadGTM(){
+  if(window.__gtmLoaded)return;
+  window.__gtmLoaded=true;
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5T2T94K8');
+}
 (function(){var ok=false;try{ok=localStorage.getItem('trm_cookie_ok')==='1'}catch(e){}
-if(ok)return;var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
-var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',function(){try{localStorage.setItem('trm_cookie_ok','1')}catch(e){}b.classList.add('hide')})})();
+if(ok){loadGTM();return;}
+var b=document.getElementById('cookieBar');if(!b)return;b.classList.remove('hide');
+var btn=document.getElementById('cookieOk');if(btn)btn.addEventListener('click',function(){try{localStorage.setItem('trm_cookie_ok','1')}catch(e){}b.classList.add('hide');loadGTM();})})();
 </script>
 </body>
 </html>
