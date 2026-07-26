@@ -352,9 +352,18 @@ footer{background:#27313D;padding:64px 80px 28px}
 .cform{background:white;padding:36px;text-align:left}
 .cform .f-row{margin-bottom:16px}
 .cform label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
-.cform input,.cform textarea{width:100%;padding:11px 14px;border:1px solid var(--border);font-family:inherit;font-size:14px;color:var(--text);background:var(--bg);transition:border-color .2s,background .2s}
-.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--blue);background:white}
+.cform input,.cform textarea,.cform select{width:100%;padding:11px 14px;border:1px solid var(--border);font-family:inherit;font-size:14px;color:var(--text);background:var(--bg);transition:border-color .2s,background .2s}
+.cform input:focus,.cform textarea:focus,.cform select:focus{outline:none;border-color:var(--blue);background:white}
 .cform textarea{resize:vertical;min-height:100px}
+.cform select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a6472' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:36px}
+.cform-details{margin-bottom:16px;border:1px solid var(--border);background:var(--bg)}
+.cform-details summary{list-style:none;cursor:pointer;padding:12px 14px;font-size:13px;font-weight:600;color:var(--blue);display:flex;align-items:center;justify-content:space-between;user-select:none}
+.cform-details summary::-webkit-details-marker{display:none}
+.cform-details summary .opt-tag{font-weight:400;color:var(--soft);margin-left:4px}
+.cform-details summary::after{content:'+';font-size:18px;color:var(--blue);flex-shrink:0;margin-left:8px;transition:transform .2s}
+.cform-details[open] summary::after{transform:rotate(45deg)}
+.cform-details .details-body{padding:6px 14px 14px}
+.cform-details .details-body .f-row:last-child{margin-bottom:0}
 .cform button{width:100%;background:var(--blue);color:white;border:none;padding:14px;font-weight:700;font-size:15px;cursor:pointer;transition:background .2s,transform .2s}
 .cform button:hover{background:var(--blue-dark);transform:translateY(-1px)}
 .cform-msg{display:none;background:#e7f3ec;color:#1e6b3f;padding:14px;font-size:14px;margin-top:14px}
@@ -695,6 +704,66 @@ footer{background:#27313D;padding:64px 80px 28px}
         <label for="cf-phone">Teléfono</label>
         <input id="cf-phone" name="telefono" type="tel">
       </div>
+      <div class="f-row">
+        <label for="cf-disp">Disponibilidad / urgencia</label>
+        <select id="cf-disp" name="disponibilidad">
+          <option value="">Selecciona una opción</option>
+          <option value="Urgente - fuga activa">Urgente – fuga activa</option>
+          <option value="Esta semana">Esta semana</option>
+          <option value="Este mes">Este mes</option>
+          <option value="Sin prisa, solo información">Sin prisa, solo información</option>
+        </select>
+      </div>
+      <details class="cform-details">
+        <summary>¿Tienes los datos de la cubierta? <span class="opt-tag">(opcional)</span></summary>
+        <div class="details-body">
+          <div class="f-row">
+            <label for="cf-m2">Superficie (m²)</label>
+            <input id="cf-m2" name="superficie_m2" type="number" min="0" inputmode="numeric">
+          </div>
+          <div class="f-row">
+            <label for="cf-dir">Dirección exacta</label>
+            <input id="cf-dir" name="direccion_exacta" type="text">
+          </div>
+          <div class="f-row">
+            <label for="cf-tipo">Tipo de cubierta</label>
+            <select id="cf-tipo" name="tipo_cubierta">
+              <option value="">Selecciona una opción</option>
+              <option value="Grava">Grava</option>
+              <option value="Lámina (PVC/TPO/EPDM)">Lámina (PVC/TPO/EPDM)</option>
+              <option value="Bituminosa">Bituminosa</option>
+              <option value="Ajardinada">Ajardinada</option>
+              <option value="Teja">Teja</option>
+              <option value="No lo sé">No lo sé</option>
+            </select>
+          </div>
+          <div class="f-row">
+            <label for="cf-anio">Año de construcción / impermeabilización</label>
+            <input id="cf-anio" name="anio_construccion" type="text" placeholder="Ej. 2015">
+          </div>
+          <div class="f-row">
+            <label for="cf-soporte">Soporte constructivo</label>
+            <select id="cf-soporte" name="soporte_constructivo">
+              <option value="">Selecciona una opción</option>
+              <option value="Hormigón">Hormigón</option>
+              <option value="Chapa metálica">Chapa metálica</option>
+              <option value="Madera">Madera</option>
+              <option value="No lo sé">No lo sé</option>
+            </select>
+          </div>
+          <div class="f-row">
+            <label for="cf-acceso">Tipo de acceso</label>
+            <select id="cf-acceso" name="tipo_acceso">
+              <option value="">Selecciona una opción</option>
+              <option value="Escalera fija">Escalera fija</option>
+              <option value="Escalera de mano">Escalera de mano</option>
+              <option value="Trampilla">Trampilla</option>
+              <option value="Necesita grúa o elevador">Necesita grúa o elevador</option>
+              <option value="No lo sé">No lo sé</option>
+            </select>
+          </div>
+        </div>
+      </details>
       <div class="f-row">
         <label for="cf-msg">Mensaje</label>
         <textarea id="cf-msg" name="mensaje" required></textarea>

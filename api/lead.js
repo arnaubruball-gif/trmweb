@@ -10,7 +10,11 @@ const APPS_SCRIPT_URL =
   process.env.APPS_SCRIPT_URL ||
   'https://script.google.com/macros/s/AKfycbyXMTkT8xSDaAOxJyzUIUN-P8mWlyOt6cjBWOw8a_y-KpSQjMER5NAzZP5jLwZ-XTLO/exec';
 
-const FIELDS = ['nombre', 'email', 'telefono', 'mensaje', 'origen'];
+const FIELDS = [
+  'nombre', 'email', 'telefono', 'mensaje', 'origen',
+  'disponibilidad', 'superficie_m2', 'direccion_exacta',
+  'tipo_cubierta', 'anio_construccion', 'soporte_constructivo', 'tipo_acceso',
+];
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
