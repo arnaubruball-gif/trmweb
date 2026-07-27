@@ -13,7 +13,7 @@ const APPS_SCRIPT_URL =
 const FIELDS = [
   'nombre', 'email', 'telefono', 'mensaje', 'origen',
   'disponibilidad', 'superficie_m2', 'direccion_exacta',
-  'tipo_cubierta', 'anio_construccion', 'soporte_constructivo', 'tipo_acceso',
+  'tipo_impermeabilizacion', 'anio_construccion', 'soporte_constructivo', 'tipo_acceso',
 ];
 
 module.exports = async function handler(req, res) {
