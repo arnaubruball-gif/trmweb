@@ -162,6 +162,12 @@ footer{background:#27313D;padding:64px 80px 28px}
 @keyframes emgPulse{0%,100%{opacity:1}50%{opacity:.35}}
 @media(max-width:960px){.emg-badge{bottom:16px;right:16px;max-width:180px;font-size:12px;padding:9px 24px 9px 12px}}
 @media(prefers-reduced-motion:reduce){.emg-badge{animation:none}.emg-dot{animation:none}}
+
+/* MOBILE: mostrar la imagen antes que el texto */
+@media(max-width:960px){
+  .page-hero-right{order:-1}
+  .cs-img{order:-1}
+}
 </style>
 <meta name="theme-color" content="#1B3E78">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
