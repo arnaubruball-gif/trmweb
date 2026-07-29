@@ -149,6 +149,9 @@ nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08)}
 }
 .nav-links li>a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 .nav-lang{font-weight:700!important}
+.nav-lang{display:inline-flex!important;align-items:center;gap:6px}
+.nav-lang img{display:block;border-radius:3px;border:1px solid rgba(0,0,0,.15)}
+.mob-menu a[hreflang] img{width:24px;height:16px;border-radius:3px;border:1px solid rgba(0,0,0,.15);vertical-align:middle;margin-right:10px}
 .nav-cta{
   background:var(--blue)!important;color:white!important;
   padding:10px 20px!important;font-weight:600!important;
@@ -468,7 +471,7 @@ footer{background:#27313D;padding:64px 80px 28px}
     <li><a href="/ca/manteniment/">Manteniment</a></li>
     <li><a href="/ca/sensors-humitat/">Sensors d'humitat</a></li>
     <li><a href="/ca/qui-som/">Qui som</a></li>
-    <li><a href="/" class="nav-lang" hreflang="es">ES</a></li>
+    <li><a href="/" class="nav-lang" hreflang="es" title="Castellano"><img src="/img/flag-es.svg" alt="" width="20" height="14">ES</a></li>
     <li><a href="#cta" class="nav-cta">Contacte</a></li>
   </ul>
   <button class="nav-ham" id="navHam" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -478,7 +481,7 @@ footer{background:#27313D;padding:64px 80px 28px}
   <a href="/ca/manteniment/">Manteniment</a>
   <a href="/ca/sensors-humitat/">Sensors d'humitat</a>
   <a href="/ca/qui-som/">Qui som</a>
-  <a href="/" hreflang="es">Castellano (ES)</a>
+  <a href="/" hreflang="es"><img src="/img/flag-es.svg" alt="" width="22" height="15">Castellano (ES)</a>
   <a href="#cta" class="mob-cta">Contacte</a>
 </div>
 

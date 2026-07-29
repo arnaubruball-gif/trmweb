@@ -21,6 +21,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);backgrou
 .nav-links a{font-size:14px;color:var(--text);text-decoration:none}
 .nav-links a:hover{color:var(--blue)}
 .nav-lang{font-weight:700}
+.nav-lang{display:inline-flex!important;align-items:center;gap:6px}
+.nav-lang img{display:block;border-radius:3px;border:1px solid rgba(0,0,0,.15)}
+.mob-menu a[hreflang] img{width:24px;height:16px;border-radius:3px;border:1px solid rgba(0,0,0,.15);vertical-align:middle;margin-right:10px}
 .nav-cta{background:var(--blue)!important;color:white!important;padding:10px 20px!important}
 main{max-width:760px;margin:0 auto;padding:calc(var(--nav-h) + 60px) 24px 90px}
 h1{font-size:clamp(26px,3vw,38px);font-weight:700;margin-bottom:8px}
@@ -70,7 +73,7 @@ footer{background:#27313D;padding:64px 80px 28px}
   <a href="/" class="nav-logo"><img src="/img/logo-trm.png" alt="TRM – Technical Roof Management Spain"></a>
   <ul class="nav-links">
     <li><a href="/">Inicio</a></li>
-    <li><a href="/ca/cookies.html" class="nav-lang" hreflang="ca">CA</a></li>
+    <li><a href="/ca/cookies.html" class="nav-lang" hreflang="ca" title="Català"><img src="/img/flag-ca.svg" alt="" width="20" height="14">CA</a></li>
     <li><a href="/#cta" class="nav-cta">Contacto</a></li>
   </ul>
 </nav>
