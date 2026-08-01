@@ -2,6 +2,8 @@
   "redirects": [
     { "source": "/service-page/detecci%C3%B3n-de-filtraciones", "destination": "/deteccion-de-fugas/", "permanent": true },
     { "source": "/service-page/inspecci%C3%B3n-t%C3%A9cnica", "destination": "/mantenimiento/", "permanent": true },
-    { "source": "/post/c%C3%B3mo-detectar-filtraciones-en-techos-industriales", "destination": "/deteccion-de-fugas/", "permanent": true }
+    { "source": "/post/c%C3%B3mo-detectar-filtraciones-en-techos-industriales", "destination": "/deteccion-de-fugas/", "permanent": true },
+    { "source": "/services-4", "destination": "/deteccion-de-fugas/", "permanent": true },
+    { "source": "/services-:id", "destination": "/", "permanent": true }
   ]
 }
