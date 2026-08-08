@@ -5,5 +5,11 @@
     { "source": "/post/c%C3%B3mo-detectar-filtraciones-en-techos-industriales", "destination": "/deteccion-de-fugas/", "permanent": true },
     { "source": "/services-4", "destination": "/deteccion-de-fugas/", "permanent": true },
     { "source": "/services-:id", "destination": "/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/social/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    }
   ]
 }
