@@ -99,26 +99,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://trm-spain.com/aviso-legal.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://trm-spain.com/privacidad.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://trm-spain.com/cookies.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://trm-spain.com/terminos-condiciones.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
     <loc>https://trm-spain.com/ca/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -142,25 +122,5 @@
     <loc>https://trm-spain.com/ca/qui-som/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://trm-spain.com/ca/avis-legal.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://trm-spain.com/ca/privacitat.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://trm-spain.com/ca/cookies.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://trm-spain.com/ca/termes-i-condicions.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
   </url>
 </urlset>
