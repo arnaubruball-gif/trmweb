@@ -1,4 +1,64 @@
 User-agent: *
 Allow: /
 
+# Reglas explícitas para agentes de IA.
+# El comodín de arriba ya los permitiría, pero varios rastreadores solo aplican
+# el grupo que lleva su nombre, y algunos motores tratan la ausencia de regla
+# propia como "no declarado" en vez de "permitido". Declararlos quita la
+# ambigüedad: queremos que nos lean y nos citen.
+#
+# Nota: /social/ NO se bloquea aquí a propósito. Se sirve con la cabecera
+# X-Robots-Tag: noindex (ver vercel.json). Si se bloqueara el rastreo, el
+# buscador no llegaría a leer ese noindex y podría indexar la URL igualmente.
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Google: Gemini y AI Overviews. Es independiente de Googlebot.
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft Copilot
+User-agent: Bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl: alimenta el entrenamiento de varios modelos
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
 Sitemap: https://trm-spain.com/sitemap.xml
