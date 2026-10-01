@@ -73,12 +73,26 @@
   <rect width="1080" height="1350" fill="url(#paperBg)"/><rect width="1080" height="1350" filter="url(#grain)"/>
   <!-- hero must clear the canvas before the closing card lands, or the two overlap -->
   <g style="animation:fadeOut .5s 8.7s cubic-bezier(.22,.9,.35,1) forwards"><g transform="translate(390,640)"><g style="animation:float 4s ease-in-out infinite">
-    <line x1="0" y1="0" x2="-170" y2="-100" stroke="#B9C9E6" stroke-width="2.5" stroke-dasharray="4 7"/>
-    <line x1="0" y1="0" x2="150" y2="-120" stroke="#B9C9E6" stroke-width="2.5" stroke-dasharray="4 7"/>
-    <g transform="translate(-170,-100)" filter="url(#softSm)"><circle r="11" fill="url(#topFaceL)"/></g>
-    <g transform="translate(150,-120)" filter="url(#softSm)"><circle r="11" fill="url(#topFaceL)"/></g>
+    <g filter="url(#soft)"><rect x="-244" y="-110" width="488" height="182" rx="8" fill="#D8CBA0"/></g>
+    <rect x="-244" y="-110" width="488" height="22" rx="8" fill="#1B3E78"/>
+    <rect x="-244" y="-96" width="488" height="8" fill="#1B3E78"/>
+    <line x1="-52" y1="6" x2="-160" y2="6" stroke="#A8926A" stroke-width="2.5" stroke-dasharray="4 7"/>
+    <line x1="52" y1="6" x2="160" y2="6" stroke="#A8926A" stroke-width="2.5" stroke-dasharray="4 7"/>
+    <g transform="translate(-178,6)">
+      <rect x="-5" y="-94" width="10" height="82" fill="#B9C9E6"/>
+      <rect x="-17" y="-94" width="34" height="8" rx="3" fill="#B9C9E6"/>
+      <g filter="url(#softSm)"><circle r="14" fill="url(#topFaceL)"/></g>
+      <circle r="4.5" fill="#1B3E78"/>
+    </g><g transform="translate(178,6)">
+      <rect x="-5" y="-94" width="10" height="82" fill="#B9C9E6"/>
+      <rect x="-17" y="-94" width="34" height="8" rx="3" fill="#B9C9E6"/>
+      <g filter="url(#softSm)"><circle r="14" fill="url(#topFaceL)"/></g>
+      <circle r="4.5" fill="#1B3E78"/>
+    </g>
     <circle class="ring" r="30" fill="none" stroke="#4A78C4" stroke-width="3"/>
     <circle class="ring" r="30" fill="none" stroke="#4A78C4" stroke-width="3" style="animation-delay:.7s"/>
+    <rect x="-7" y="-88" width="14" height="52" fill="#B9C9E6"/>
+    <rect x="-44" y="-88" width="88" height="9" rx="3" fill="#B9C9E6"/>
     <g filter="url(#soft)">
       <circle r="40" fill="url(#topFaceL)"/>
     </g>
@@ -99,7 +113,7 @@
   </text>
   <text x="64" y="990" font-family="'Public Sans',sans-serif" font-size="25" fill="#55678F"
         style="opacity:0;animation:popIn .5s 3.4499999999999997s cubic-bezier(.22,.9,.35,1) forwards, fadeOut .4s 6.1s cubic-bezier(.22,.9,.35,1) forwards">
-    <tspan x="64" dy="46">Se colocan sobre la cubierta y detectan</tspan><tspan x="64" dy="34">la humedad antes de que sea visible.</tspan>
+    <tspan x="64" dy="46">Van bajo la impermeabilización y detectan</tspan><tspan x="64" dy="34">la humedad antes de que sea visible.</tspan>
   </text>
 
   <text x="64" y="990" font-family="'Big Shoulders',sans-serif" font-weight="800" font-size="46" fill="#16264A"

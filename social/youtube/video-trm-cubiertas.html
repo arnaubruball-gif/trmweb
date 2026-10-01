@@ -887,51 +887,55 @@
   
   <text x="110" y="200" font-family="'Public Sans',sans-serif" font-size="31" fill="#9FB0C8" opacity="0"
     style="animation:rise 1s 306.25s cubic-bezier(.22,.85,.3,1) forwards, fOut .8s 318s ease forwards">Dejamos la cubierta vigilada.</text>
-  <g style="opacity:0;animation:fIn .8s 310s ease forwards"><g transform="translate(440,560)">
+  <!-- Los sensores van BAJO la impermeabilización, apoyados sobre el aislamiento:
+       es ahí donde el agua se acumula primero, mucho antes de asomar por dentro.
+       Por eso el cuerpo del sensor se dibuja hacia abajo desde R.insY y la lámina
+       queda por encima, intacta. -->
+  <g style="opacity:0;animation:fIn .8s 310s ease forwards"><g transform="translate(440,575)">
     <g style="transform-origin:center;transform-box:fill-box;animation:markIn .7s 310s cubic-bezier(.22,.85,.3,1) forwards">
-      <rect x="-38" y="-9" width="76" height="13" rx="5" fill="#9BA8C2"/>
-      <rect x="-31" y="-34" width="62" height="28" rx="13" fill="#E8EDF6"/>
-      <circle cx="0" cy="-20" r="6" fill="#2E6FB7"/>
+      <rect x="-38" y="0" width="76" height="10" rx="4" fill="#9BA8C2"/>
+      <rect x="-31" y="8" width="62" height="28" rx="12" fill="#E8EDF6"/>
+      <circle cx="0" cy="22" r="6" fill="#2E6FB7"/>
     </g>
     <g style="opacity:0;animation:fIn 1s 314s ease forwards">
-      <circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 315s ease-out infinite"/><circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 315.85s ease-out infinite"/><circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 316.7s ease-out infinite"/>
-    </g></g></g><g style="opacity:0;animation:fIn .8s 311.6s ease forwards"><g transform="translate(900,560)">
+      <circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 315s ease-out infinite"/><circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 315.85s ease-out infinite"/><circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 316.7s ease-out infinite"/>
+    </g></g></g><g style="opacity:0;animation:fIn .8s 311.6s ease forwards"><g transform="translate(900,575)">
     <g style="transform-origin:center;transform-box:fill-box;animation:markIn .7s 311.6s cubic-bezier(.22,.85,.3,1) forwards">
-      <rect x="-38" y="-9" width="76" height="13" rx="5" fill="#9BA8C2"/>
-      <rect x="-31" y="-34" width="62" height="28" rx="13" fill="#E8EDF6"/>
-      <circle cx="0" cy="-20" r="6" fill="#2E6FB7"/>
+      <rect x="-38" y="0" width="76" height="10" rx="4" fill="#9BA8C2"/>
+      <rect x="-31" y="8" width="62" height="28" rx="12" fill="#E8EDF6"/>
+      <circle cx="0" cy="22" r="6" fill="#2E6FB7"/>
     </g>
     <g style="opacity:0;animation:fIn 1s 315.6s ease forwards">
-      <circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 316.6s ease-out infinite"/><circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 317.45000000000005s ease-out infinite"/><circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 318.3s ease-out infinite"/>
-    </g></g></g><g style="opacity:0;animation:fIn .8s 313.2s ease forwards"><g transform="translate(1360,560)">
+      <circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 316.6s ease-out infinite"/><circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 317.45000000000005s ease-out infinite"/><circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 318.3s ease-out infinite"/>
+    </g></g></g><g style="opacity:0;animation:fIn .8s 313.2s ease forwards"><g transform="translate(1360,575)">
     <g style="transform-origin:center;transform-box:fill-box;animation:markIn .7s 313.2s cubic-bezier(.22,.85,.3,1) forwards">
-      <rect x="-38" y="-9" width="76" height="13" rx="5" fill="#9BA8C2"/>
-      <rect x="-31" y="-34" width="62" height="28" rx="13" fill="#E8EDF6"/>
-      <circle cx="0" cy="-20" r="6" fill="#2E6FB7"/>
+      <rect x="-38" y="0" width="76" height="10" rx="4" fill="#9BA8C2"/>
+      <rect x="-31" y="8" width="62" height="28" rx="12" fill="#E8EDF6"/>
+      <circle cx="0" cy="22" r="6" fill="#2E6FB7"/>
     </g>
     <g style="opacity:0;animation:fIn 1s 317.2s ease forwards">
-      <circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 318.2s ease-out infinite"/><circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 319.05s ease-out infinite"/><circle cx="0" cy="-20" r="26" fill="none" stroke="#5FD08C" stroke-width="3"
-        style="transform-origin:0px -20px;transform-box:view-box;animation:ping 2.6s 319.9s ease-out infinite"/>
+      <circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 318.2s ease-out infinite"/><circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 319.05s ease-out infinite"/><circle cx="0" cy="22" r="20" fill="none" stroke="#5FD08C" stroke-width="3"
+        style="transform-origin:0px 22px;transform-box:view-box;animation:ping 2.6s 319.9s ease-out infinite"/>
     </g></g></g>
   
   <g style="opacity:0;animation:fIn .5s 318s ease forwards, fOut .6s 330s ease forwards">
-    <g style="stroke-dasharray:292;stroke-dashoffset:292;animation:draw .7s 318s cubic-bezier(.22,.85,.3,1) forwards">
-      <path d="M1120,350 L900,520" fill="none" stroke="#8FE0B4" stroke-width="3.5" stroke-linecap="round"/>
+    <g style="stroke-dasharray:387;stroke-dashoffset:387;animation:draw .7s 318s cubic-bezier(.22,.85,.3,1) forwards">
+      <path d="M1180,350 L900,597" fill="none" stroke="#8FE0B4" stroke-width="3.5" stroke-linecap="round"/>
     </g>
-    <g transform="translate(900,520)"><circle r="8" fill="#8FE0B4"/><circle r="3.5" fill="#101722"/></g>
-    <text x="1120" y="332" text-anchor="start" font-family="'Big Shoulders',sans-serif"
-      font-weight="700" font-size="30" letter-spacing="1.6" fill="#8FE0B4">SENSORES EN SUPERFICIE</text></g>
+    <g transform="translate(900,597)"><circle r="8" fill="#8FE0B4"/><circle r="3.5" fill="#101722"/></g>
+    <text x="1180" y="332" text-anchor="start" font-family="'Big Shoulders',sans-serif"
+      font-weight="700" font-size="30" letter-spacing="1.6" fill="#8FE0B4">SENSORES BAJO LA LÁMINA</text></g>
   
   <text x="110" y="872" font-family="'Public Sans',sans-serif" font-size="31" fill="#9FB0C8" opacity="0"
-    style="animation:rise 1s 320.25s cubic-bezier(.22,.85,.3,1) forwards, fOut .8s 330s ease forwards">Se colocan encima. No hay que abrir la cubierta.</text>
+    style="animation:rise 1s 320.25s cubic-bezier(.22,.85,.3,1) forwards, fOut .8s 330s ease forwards">Van bajo la impermeabilización, donde el agua llega primero.</text>
 
   <g style="opacity:0;animation:fIn .8s 326s ease forwards, fOut .8s 340s ease forwards"><g transform="translate(220,330)">
     <rect x="-120" y="-86" width="240" height="172" rx="18" fill="#141A26" stroke="#39455C" stroke-width="3"/>

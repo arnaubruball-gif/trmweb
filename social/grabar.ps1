@@ -1,23 +1,46 @@
-# =====================================================================
+﻿# =====================================================================
 #  TRM · graba cada animación a MP4 con su duración real
 #
 #  El problema del script anterior: esperaba un tiempo fijo (~10 s) para
 #  todas las piezas, así que las largas salían cortadas. Aquí cada pieza
 #  lleva escrita su duración.
 #
+#  Cada pieza se guarda en la subcarpeta de su estilo (ver Get-Categoria), para
+#  no acabar con 55 MP4 sueltos en la misma carpeta.
+#
 #  Uso:
 #     .\grabar.ps1                 -> graba todo
 #     .\grabar.ps1 -Solo video-trm -> graba solo lo que coincida
 #     .\grabar.ps1 -SoloLargos     -> solo las piezas de más de 15 s
+#     .\grabar.ps1 -Organizar      -> no graba: solo reordena los MP4 que ya hay
 # =====================================================================
 param(
   [string]$Solo = "",
   [switch]$SoloLargos,
+  [switch]$Organizar,
   [string]$Salida = "C:\Users\arnau\OneDrive\Desktop\empresa\TRM\salida"
 )
 
 $ErrorActionPreference = "Stop"
 $social = "C:\Users\arnau\Claude\Projects\trmweb\social"
+
+# --- a qué carpeta va cada pieza, por estilo ---
+# El orden importa: video-trm-cubiertas tiene que comprobarse ANTES que ^video-,
+# o el vídeo largo acabaría con la serie azul.
+function Get-Categoria([string]$n) {
+  switch -Regex ($n) {
+    '^car-'                 { '01-carruseles-4x5';   break }
+    '^video-trm-cubiertas$' { '08-youtube';          break }
+    '^video-'               { '02-serie-azul-4x5';   break }
+    '^light-'               { '03-serie-clara-4x5';  break }
+    '^(reel|hv)-'           { '04-reels-9x16';       break }
+    '^stack-'               { '05-3d-cuadrado-1x1';  break }
+    '^(historia-|proceso-)' { '06-historias-9x16';   break }
+    '^cine-'                { '07-cinematicas-16x9'; break }
+    '^impacto-'             { '09-impacto';          break }
+    default                 { '99-sin-clasificar' }
+  }
+}
 
 # --- ffmpeg (instalado con winget, no siempre está en el PATH de la sesión) ---
 $ffmpeg = (Get-Command ffmpeg -ErrorAction SilentlyContinue).Source
@@ -96,6 +119,11 @@ $piezas = @(
   @{n="cine-2-el-barrido";          d="";        w=1920; h=1080; s=20 }
   @{n="cine-3-el-agua-que-se-queda";d="";        w=1920; h=1080; s=24 }
 
+  # --- serie IMPACTO: lo que hay debajo de la lámina ---
+  @{n="impacto-1-escaner";          d="";        w=1080; h=1920; s=25 }
+  @{n="impacto-2-radiografia";      d="";        w=1080; h=1080; s=20 }
+  @{n="impacto-3-tres-milimetros";  d="";        w=1080; h=1920; s=20 }
+
   # --- el vídeo largo de YouTube ---
   @{n="video-trm-cubiertas";        d="youtube"; w=1920; h=1080; s=382 }
 )
@@ -104,6 +132,26 @@ if ($Solo)      { $piezas = $piezas | Where-Object { $_.n -like "*$Solo*" } }
 if ($SoloLargos){ $piezas = $piezas | Where-Object { $_.s -gt 15 } }
 
 New-Item -ItemType Directory -Force -Path $Salida | Out-Null
+
+# --- modo reordenar: mueve los MP4 sueltos a su carpeta y termina ---
+if ($Organizar) {
+  $movidos = 0
+  foreach ($f in Get-ChildItem $Salida -Filter *.mp4 -File) {
+    $cat = Get-Categoria $f.BaseName
+    $dir = Join-Path $Salida $cat
+    New-Item -ItemType Directory -Force -Path $dir | Out-Null
+    Move-Item $f.FullName (Join-Path $dir $f.Name) -Force
+    Write-Host ("  {0,-26} -> {1}" -f $f.Name, $cat) -ForegroundColor DarkGray
+    $movidos++
+  }
+  Write-Host ""
+  Write-Host "$movidos archivos reordenados." -ForegroundColor White
+  foreach ($d in Get-ChildItem $Salida -Directory | Sort-Object Name) {
+    $n = (Get-ChildItem $d.FullName -Filter *.mp4 -File | Measure-Object).Count
+    Write-Host ("  {0,-24} {1,3} vídeos" -f $d.Name, $n)
+  }
+  return
+}
 $tmp = Join-Path $env:TEMP "trm-rec"
 New-Item -ItemType Directory -Force -Path $tmp | Out-Null
 
@@ -147,7 +195,8 @@ foreach ($p in $piezas) {
 
   $mins = [math]::Floor($p.s / 60); $rest = $p.s % 60
   $dur  = if ($mins -gt 0) { "{0}:{1:D2}" -f $mins, $rest } else { "$($p.s)s" }
-  Write-Host "[$i/$total] $($p.n)  ($($p.w)x$($p.h), $dur)" -ForegroundColor Cyan
+  $cat  = Get-Categoria $p.n
+  Write-Host "[$i/$total] $($p.n)  ($($p.w)x$($p.h), $dur)  -> $cat" -ForegroundColor Cyan
 
   $work = Join-Path $tmp $p.n
   Remove-Item $work -Recurse -Force -ErrorAction SilentlyContinue
@@ -159,7 +208,9 @@ foreach ($p in $piezas) {
   $webm = Get-ChildItem $work -Filter *.webm | Select-Object -First 1
   if (-not $webm) { Write-Host "   no se generó vídeo" -ForegroundColor Red; $fail++; continue }
 
-  $mp4 = Join-Path $Salida "$($p.n).mp4"
+  $destDir = Join-Path $Salida $cat
+  New-Item -ItemType Directory -Force -Path $destDir | Out-Null
+  $mp4 = Join-Path $destDir "$($p.n).mp4"
   & $ffmpeg -y -loglevel error -i $webm.FullName `
       -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -r 30 `
       -vf "scale=$($p.w):$($p.h):flags=lanczos" -movflags +faststart $mp4
